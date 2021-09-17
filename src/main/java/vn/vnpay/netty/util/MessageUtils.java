@@ -27,13 +27,11 @@ public class MessageUtils {
         }
     }
 
-
-
     public static byte[] pack(PaymentMessage paymentMessage) throws ISOException {
         byte[] packedMessage;
         isoMsg.setMTI("0200");
         isoMsg.set(3, "000010");
-        isoMsg.set(4, "1500");
+        isoMsg.set(4, paymentMessage.getPayment().getRealAmount());
         isoMsg.set(7, "1206041200");
         isoMsg.set(11, "000001");
         isoMsg.set(41, "12340001");
