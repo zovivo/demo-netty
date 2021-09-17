@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="log-path">logs/netty-server</Property>
+        <Property name="name-file">netty-server</Property>
+        <Property name="size-file">64 MB</Property>
+        <Property name="default-max-file">10000</Property>
+        <Property name="default-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n</Property>
+        <Property name="debug-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${default-pattern-layout}"/>
+        </Console>
+        <RollingRandomAccessFile name="info-log" fileName="${log-path}/${name-file}.log" append="true"
+                                 filePattern="${log-path}/$${date:yyyy-MM}/${name-file}-%d{yyyyMMdd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${default-pattern-layout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${size-file}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${default-max-file}"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="warn-log" fileName="${log-path}/${name-file}-warn.log" append="true"
+                                 filePattern="${log-path}/$${date:yyyy-MM}/${name-file}-warn-%d{yyyyMMdd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${default-pattern-layout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${size-file}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${default-max-file}"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="error-log" fileName="${log-path}/${name-file}-error.log" append="true"
+                                 filePattern="${log-path}/$${date:yyyy-MM}/${name-file}-error-%d{yyyyMMdd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${default-pattern-layout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${size-file}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${default-max-file}"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="debug-log" fileName="${log-path}/${name-file}-debug.log" append="true"
+                                 filePattern="${log-path}/$${date:yyyy-MM}/${name-file}-debug-%d{yyyyMMdd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${debug-pattern-layout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${size-file}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${default-max-file}"/>
+        </RollingRandomAccessFile>
+        <Async name="Async">
+            <AppenderRef ref="info-log"/>
+            <AppenderRef ref="debug-log"/>
+            <AppenderRef ref="warn-log"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Logger name="vn.vnpay" additivity="false">
+            <appender-ref ref="console" level="info"/>
+            <appender-ref ref="warn-log" level="warn"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="debug-log" level="debug"/>
+            <appender-ref ref="info-log" level="info"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
