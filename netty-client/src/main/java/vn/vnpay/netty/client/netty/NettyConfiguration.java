@@ -24,7 +24,7 @@ public class NettyConfiguration {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(workerGroup);
         bootstrap.channel(NioSocketChannel.class);
-        bootstrap.option(ChannelOption.SO_REUSEADDR, true);
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
         return bootstrap;
     }
 

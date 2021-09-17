@@ -46,7 +46,10 @@ public class QueueListener {
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, paymentMessage.getRequestId());
         logger.info("Received from queue: {} Message: {}", replyQueue, message);
         Channel channel = server.getChannel(paymentMessage.getChannelId());
-        String response = CommonUtils.parseObjectToString(paymentMessage);
+        if (null == channel || !channel.isActive() || !channel.isOpen()) {
+            logger.debug("Channel is inactive or closed");
+            return;
+        }
         logger.info("Response to client channel: {} Message: {}", channel.id().asLongText(), message);
         threadPoolExecutor.execute(new ResponseHandler(paymentMessage, channel));
         ThreadContext.remove(ServerConfig.LOG_TOKEN_KEY);

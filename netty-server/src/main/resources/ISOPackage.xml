@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE isopackager SYSTEM "genericpackager.dtd">
+<isopackager>
+    <isofield id="0" length="4" name="MESSAGE TYPE INDICATOR" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="1" length="32" name="BIT MAP" class="org.jpos.iso.IFA_BITMAP" />
+    <isofield id="3" length="6" name="PROCESSING CODE/Tran Type" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="4" length="12" name="AMOUNT, TRANSACTION" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="7" length="10" name="TRANSMISSION TIME" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="11" length="6" name="SYSTEM TRACE AUDIT NUMBER"
+                  pad="true" class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="12" length="6" name="LOCAL TIME" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="13" length="4" name="LOCAL DATE" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="15" length="4" name="Settlement Date" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="18" length="4" name="Channel" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="32" length="6" name="ACQUIRER CODE" pad="true"
+                  class="org.jpos.iso.IFA_LLCHAR" />
+    <isofield id="38" length="6" name="REFERENCE NUMBER" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="39" length="2" name="RESPONSE CODE" pad="true"
+                  class="org.jpos.iso.IFA_NUMERIC" />
+    <isofield id="41" length="8" name="ACQUIRING INSTITUTION ID"
+                  pad="true" class="org.jpos.iso.IF_CHAR" />
+    <isofield id="48" length="999" name="ADDITIONAL DATA" pad="true" class="org.jpos.iso.IFA_LLLCHAR" />
+    <isofield id="49" length="3" name="CURENCY TYPE"  class="org.jpos.iso.IF_CHAR" />
+    <isofield id="64" length="16" name="Primary MAC"  class="org.jpos.iso.IF_CHAR" />
+    <isofield id="102" length="99" name="FROM ACCOUNTNO" pad="false" class="org.jpos.iso.IFA_LLCHAR" />
+    <isofield id="128" length="16" name="Secondary MAC"  class="org.jpos.iso.IF_CHAR" />
+</isopackager>

@@ -18,7 +18,6 @@ public class NettyServerApplication {
         SpringApplication.run(NettyServerApplication.class, args);
     }
 
-    @SuppressWarnings({"Convert2Lambda", "java:S1604"})
     @Bean
     public ApplicationListener<ApplicationReadyEvent> readyEventApplicationListener() {
         return new ApplicationListener<ApplicationReadyEvent>() {

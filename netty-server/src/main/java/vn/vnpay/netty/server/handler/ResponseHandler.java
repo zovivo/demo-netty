@@ -34,6 +34,14 @@ public class ResponseHandler implements Runnable {
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, paymentMessage.getRequestId());
         logger.info("Begin write response");
         String message = CommonUtils.parseObjectToString(paymentMessage);
+        if (null == channel || !channel.isActive() || !channel.isOpen()) {
+            logger.debug("Channel is inactive or closed");
+            return;
+        }
+        if (!channel.isWritable()) {
+            logger.debug("Channel is not writable");
+            return;
+        }
         channel.writeAndFlush(message.getBytes(StandardCharsets.UTF_8));
         logger.info("End write response");
         ThreadContext.clearAll();

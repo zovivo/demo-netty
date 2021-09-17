@@ -46,7 +46,7 @@ public class ServerConnector extends ChannelInboundHandlerAdapter {
         Channel channel = ctx.channel();
         server.addChannel(channel);
         this.server.getCounter().incrementChannelConnectsAndGet();
-        log.info("Server accept new connections. Counter: {}.", this.server.getCounter().toString());
+        log.debug("Server accept new connections. Counter: {}.", this.server.getCounter().toString());
 //        channel.pipeline().addLast("frameDecoder",
 //                new IsoFrameDecoder(ServerConfig.MAX_FRAME_LENGTH));
         channel.pipeline().addLast("bytesDecoder",
@@ -64,7 +64,7 @@ public class ServerConnector extends ChannelInboundHandlerAdapter {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         server.removeChannel(ctx.channel());
         this.server.getCounter().incrementChannelDisconnectsAndGet();
-        log.info("Server Inactive connections. Counter: {}", this.server.getCounter().toString());
+        log.debug("Server Inactive connections. Counter: {}", this.server.getCounter().toString());
         super.channelInactive(ctx);
     }
 }

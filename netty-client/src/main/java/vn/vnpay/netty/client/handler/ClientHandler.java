@@ -5,11 +5,13 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
+import vn.vnpay.netty.client.constant.ClientConstant;
 import vn.vnpay.netty.message.PaymentMessage;
 import vn.vnpay.netty.model.Payment;
 import vn.vnpay.netty.util.CommonUtils;
+import vn.vnpay.netty.util.MessageUtils;
 
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 /**
@@ -31,17 +33,23 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
         String requestId = UUID.randomUUID().toString();
         PaymentMessage paymentMessage = new PaymentMessage(payment);
         paymentMessage.setRequestId(requestId);
+        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, paymentMessage.getRequestId());
         String message = CommonUtils.parseObjectToString(paymentMessage);
         logger.info("Write to channel: {} message: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(paymentMessage));
-        ctx.writeAndFlush(message.getBytes(StandardCharsets.UTF_8));
+        byte[] data = MessageUtils.pack(paymentMessage);
+        logger.info("data: {}", data);
+        ctx.writeAndFlush(data);
+        ThreadContext.clearMap();
     }
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
         String message = CommonUtils.convertBytesToString(msg);
         PaymentMessage paymentMessage = CommonUtils.parseStringToObject(message, PaymentMessage.class);
+        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, paymentMessage.getRequestId());
         logger.info("Read from channel: {} message: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(paymentMessage));
         ctx.close();
+        ThreadContext.remove(ClientConstant.LOG_TOKEN_KEY);
     }
 
 }

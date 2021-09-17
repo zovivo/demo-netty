@@ -48,8 +48,9 @@ public class NettyConfiguration {
                         ChannelPipeline pipeline = ch.pipeline();
                         pipeline.addLast(ServerConfig.PIPELINE_SERVER_CONNECTOR_NAME, serverConnector);
                     }
-                });
-        b.option(ChannelOption.SO_REUSEADDR, true);
+                })
+                .option(ChannelOption.SO_BACKLOG, nettyProperties.getBacklog())
+                .childOption(ChannelOption.SO_KEEPALIVE, true);
         return b;
     }
 
