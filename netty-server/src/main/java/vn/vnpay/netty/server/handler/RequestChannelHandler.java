@@ -8,11 +8,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import vn.vnpay.netty.message.PaymentMessage;
+import vn.vnpay.netty.message.TransactionMessage;
+import vn.vnpay.netty.model.Transaction;
 import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.server.sender.QueueSender;
 import vn.vnpay.netty.util.CommonUtils;
 import vn.vnpay.netty.util.MessageUtils;
 
+import java.util.UUID;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -38,11 +41,16 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
             return;
         }
         String message = CommonUtils.convertBytesToString(msg);
-//        PaymentMessage paymentMessage = CommonUtils.parseStringToObject(message, PaymentMessage.class);
-        PaymentMessage paymentMessage = MessageUtils.unpack(msg);
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, paymentMessage.getRequestId());
+        TransactionMessage transactionMessage = MessageUtils.unpackMsg(msg);
+        String randomRequestId = UUID.randomUUID().toString();
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, randomRequestId);
+        logger.info("Read transaction message : {}", CommonUtils.parseObjectToString(transactionMessage));
+        Transaction transaction = new Transaction(transactionMessage);
+        logger.info("Transaction : {}", CommonUtils.parseObjectToString(transaction));
         logger.info("Read from channel {} message : {}", channel.id().asLongText(), message);
+        PaymentMessage paymentMessage = new PaymentMessage(transaction);
         paymentMessage.setChannelId(channel.id().asLongText());
+        paymentMessage.setRequestId(randomRequestId);
         logger.info("Handle message by RequestHandler");
         threadPoolExecutor.execute(new RequestHandler(paymentMessage, queueSender));
     }

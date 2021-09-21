@@ -31,13 +31,10 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         String requestId = UUID.randomUUID().toString();
-        PaymentMessage paymentMessage = new PaymentMessage(payment);
-        paymentMessage.setRequestId(requestId);
-        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, paymentMessage.getRequestId());
-        String message = CommonUtils.parseObjectToString(paymentMessage);
-        logger.info("Write to channel: {} message: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(paymentMessage));
-        byte[] data = MessageUtils.pack(paymentMessage);
-        logger.info("data: {}", data);
+        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, requestId);
+        String isoMessage = "0200F638461128A0A00800000000045400A013035100***19960430001000003600000000003600000080503240771967010250408050000010000D000000000668686814035100***1996=00000112599208DIGIM000VIETCOMBANK                                                 000704Hanoi                                                                                     00120210805VBKN      VBKN000000000000001          0000000000000000704704BARDBARD      1315002810001360007040000000000000000036000006100000000000000150MBVCB.700050928.060798.QUA T L chuyen tien.CT tu 0351000771996 QUA T L toi 1500281000136 Nguyen Thi Hoa  AGRIBANK  Nong nghiep va phat trien nong thon10001***                                         019ET=0805032504060798";
+        logger.info("Write to channel: {} message: {}", ctx.channel().id().asLongText(), isoMessage);
+        byte[] data = MessageUtils.packMsg(isoMessage);
         ctx.writeAndFlush(data);
         ThreadContext.clearMap();
     }

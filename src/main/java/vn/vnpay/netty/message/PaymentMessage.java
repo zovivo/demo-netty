@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import vn.vnpay.netty.model.Payment;
+import vn.vnpay.netty.model.Transaction;
 
 /**
  * Project: netty-spring
@@ -21,5 +22,13 @@ import vn.vnpay.netty.model.Payment;
 public class PaymentMessage extends Message {
 
     private Payment payment;
+
+    public PaymentMessage(Transaction transaction) {
+        Payment payment = new Payment();
+        payment.setRealAmount(transaction.getAmount());
+        payment.setPayDate(transaction.getTransactionDate());
+        payment.setAdditionalData(transaction.getAdditionalData());
+        this.payment = payment;
+    }
 
 }

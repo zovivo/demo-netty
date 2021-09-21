@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE isopackager SYSTEM "C:\Users\dell\my-workspace\demo-netty\configs\iso\genericpackager.dtd">
+<!DOCTYPE isopackager SYSTEM "genericpackager.dtd">
 <isopackager>
     <isofield id="0" length="4" name="MESSAGE TYPE INDICATOR" pad="true"
                   class="org.jpos.iso.IFA_NUMERIC" />

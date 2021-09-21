@@ -47,7 +47,7 @@ public class RabbitMQConsumer {
     public String receivedMessageAndReply(String paymentMessageStr, Message message) {
         PaymentMessage paymentMessage = CommonUtils.parseStringToObject(paymentMessageStr, PaymentMessage.class);
         PaymentModel paymentModel = CommonUtils.convertData(paymentMessage.getPayment(), PaymentModel.class);
-        ThreadContext.put("tokenKey", paymentModel.getTokenKey());
+        ThreadContext.put("tokenKey", paymentMessage.getRequestId());
         logger.info("received from queue: {} Message: {}", queue, message);
         try {
             paymentService.executePayment(paymentModel);
