@@ -5,8 +5,10 @@
         <Property name="name-file">process</Property>
         <Property name="size-file">64 MB</Property>
         <Property name="default-max-file">10000</Property>
-        <Property name="default-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n</Property>
-        <Property name="debug-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n</Property>
+        <Property name="default-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n
+        </Property>
+        <Property name="debug-pattern-layout">%d %-30.30M - Token [%X{tokenKey}] %logger{15} - %m - %-22.22c{1} %n
+        </Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
