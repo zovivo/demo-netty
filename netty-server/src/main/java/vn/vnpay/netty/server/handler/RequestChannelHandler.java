@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import vn.vnpay.netty.message.PaymentMessage;
 import vn.vnpay.netty.message.TransactionMessage;
+import vn.vnpay.netty.message.TransactionMessageWrap;
 import vn.vnpay.netty.model.Transaction;
 import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.server.sender.QueueSender;
@@ -48,10 +48,8 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
         Transaction transaction = new Transaction(transactionMessage);
         logger.info("Transaction : {}", CommonUtils.parseObjectToString(transaction));
         logger.info("Read from channel {} message : {}", channel.id().asLongText(), message);
-        PaymentMessage paymentMessage = new PaymentMessage(transaction);
-        paymentMessage.setChannelId(channel.id().asLongText());
-        paymentMessage.setRequestId(randomRequestId);
+        TransactionMessageWrap transactionMessageWrap = MessageUtils.createTransactionMessageWrap(transaction, randomRequestId, channel.id().asLongText());
         logger.info("Handle message by RequestHandler");
-        threadPoolExecutor.execute(new RequestHandler(paymentMessage, queueSender));
+        threadPoolExecutor.execute(new RequestHandler(transactionMessageWrap, queueSender));
     }
 }

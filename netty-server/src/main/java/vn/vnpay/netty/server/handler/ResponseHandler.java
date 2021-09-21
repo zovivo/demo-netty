@@ -4,11 +4,11 @@ import io.netty.channel.Channel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import vn.vnpay.netty.message.PaymentMessage;
+import org.jpos.iso.ISOException;
+import vn.vnpay.netty.message.TransactionMessageWrap;
 import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.util.CommonUtils;
-
-import java.nio.charset.StandardCharsets;
+import vn.vnpay.netty.util.MessageUtils;
 
 /**
  * Project: netty-spring
@@ -21,19 +21,19 @@ public class ResponseHandler implements Runnable {
 
     private static final Logger logger = LogManager.getLogger(RequestHandler.class);
 
-    private final PaymentMessage paymentMessage;
+    private final TransactionMessageWrap transactionMessageWrap;
     private final Channel channel;
 
-    public ResponseHandler(PaymentMessage msg, Channel channel) {
-        this.paymentMessage = msg;
+    public ResponseHandler(TransactionMessageWrap msgWrap, Channel channel) {
+        this.transactionMessageWrap = msgWrap;
         this.channel = channel;
     }
 
     @Override
     public void run() {
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, paymentMessage.getRequestId());
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getMessage().getRequestId());
         logger.info("Begin write response");
-        String message = CommonUtils.parseObjectToString(paymentMessage);
+        String message = CommonUtils.parseObjectToString(transactionMessageWrap);
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;
@@ -42,7 +42,13 @@ public class ResponseHandler implements Runnable {
             logger.debug("Channel is not writable");
             return;
         }
-        channel.writeAndFlush(message.getBytes(StandardCharsets.UTF_8));
+        byte[] response = new byte[0];
+        try {
+            response = MessageUtils.packMsg(transactionMessageWrap);
+        } catch (ISOException e) {
+            logger.debug("Packing fail: {}", e);
+        }
+        channel.writeAndFlush(response);
         logger.info("End write response");
         ThreadContext.clearAll();
     }

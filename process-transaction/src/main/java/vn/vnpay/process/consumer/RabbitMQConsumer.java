@@ -12,6 +12,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import vn.vnpay.netty.constant.State;
 import vn.vnpay.netty.message.PaymentMessage;
+import vn.vnpay.netty.message.TransactionMessageWrap;
+import vn.vnpay.netty.model.Transaction;
 import vn.vnpay.process.configuration.realoadable.ReloadablePropertySourceFactory;
 import vn.vnpay.process.exception.CustomException;
 import vn.vnpay.process.model.PaymentModel;
@@ -44,23 +46,25 @@ public class RabbitMQConsumer {
     private String queue;
 
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
-    public String receivedMessageAndReply(String paymentMessageStr, Message message) {
-        PaymentMessage paymentMessage = CommonUtils.parseStringToObject(paymentMessageStr, PaymentMessage.class);
+    public String receivedMessageAndReply(String transactionMsgWrapStr, Message message) {
+        TransactionMessageWrap transactionMessageWrap = CommonUtils.parseStringToObject(transactionMsgWrapStr, TransactionMessageWrap.class);
+        Transaction transaction = transactionMessageWrap.getTransaction();
+        PaymentMessage paymentMessage = new PaymentMessage(transaction);
         PaymentModel paymentModel = CommonUtils.convertData(paymentMessage.getPayment(), PaymentModel.class);
-        ThreadContext.put("tokenKey", paymentMessage.getRequestId());
+        ThreadContext.put("tokenKey", transactionMessageWrap.getMessage().getRequestId());
         logger.info("received from queue: {} Message: {}", queue, message);
         try {
             paymentService.executePayment(paymentModel);
         } catch (CustomException e) {
             logger.warn("custom exception: ", e);
-            paymentMessage.setState(State.FAIL);
+            transactionMessageWrap.getMessage().setState(State.FAIL);
         } catch (RuntimeException e) {
             logger.error("runtime exception: ", e);
-            paymentMessage.setState(State.FAIL);
+            transactionMessageWrap.getMessage().setState(State.FAIL);
         }
         ThreadContext.remove("tokenKey");
-        paymentMessage.setState(State.SUCCESS);
-        String responseMessage = CommonUtils.parseObjectToString(paymentMessage);
+        transactionMessageWrap.getMessage().setState(State.SUCCESS);
+        String responseMessage = CommonUtils.parseObjectToString(transactionMessageWrap);
         logger.info("return response: {}", responseMessage);
         return responseMessage;
     }

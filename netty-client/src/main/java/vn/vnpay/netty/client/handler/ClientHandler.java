@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import vn.vnpay.netty.client.constant.ClientConstant;
-import vn.vnpay.netty.message.PaymentMessage;
+import vn.vnpay.netty.message.TransactionMessage;
 import vn.vnpay.netty.model.Payment;
 import vn.vnpay.netty.util.CommonUtils;
 import vn.vnpay.netty.util.MessageUtils;
@@ -41,10 +41,10 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
-        String message = CommonUtils.convertBytesToString(msg);
-        PaymentMessage paymentMessage = CommonUtils.parseStringToObject(message, PaymentMessage.class);
-        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, paymentMessage.getRequestId());
-        logger.info("Read from channel: {} message: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(paymentMessage));
+        TransactionMessage transactionMessage = MessageUtils.unpackMsg(msg);
+        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, transactionMessage.getProcessingCode());
+        logger.info("Response code: {}", transactionMessage.getResponseCode());
+        logger.info("Read from channel: {} message: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(transactionMessage));
         ctx.close();
         ThreadContext.remove(ClientConstant.LOG_TOKEN_KEY);
     }

@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import vn.vnpay.netty.message.PaymentMessage;
+import vn.vnpay.netty.message.TransactionMessageWrap;
 import vn.vnpay.netty.util.CommonUtils;
 
 /**
@@ -34,14 +34,14 @@ public class QueueSender {
     @Value("${spring.rabbitmq.reply-queue}")
     private String replyQueue;
 
-    public void send2Queue(PaymentMessage paymentMessage) {
-        String data = CommonUtils.parseObjectToString(paymentMessage);
-        logger.info("Begin send to exchange {} message: {}", exchange, CommonUtils.parseObjectToString(paymentMessage));
+    public void send2Queue(TransactionMessageWrap transactionMessageWrap) {
+        String data = CommonUtils.parseObjectToString(transactionMessageWrap);
+        logger.info("Begin send to exchange {} message: {}", exchange, CommonUtils.parseObjectToString(transactionMessageWrap));
         rabbitTemplate.convertAndSend(exchange, routingKey, data, message -> {
             message.getMessageProperties().setReplyTo(replyQueue);
             return message;
         });
-        logger.info("Send message: {}", CommonUtils.parseObjectToString(paymentMessage));
+        logger.info("Send message: {}", CommonUtils.parseObjectToString(transactionMessageWrap));
     }
 
 }
