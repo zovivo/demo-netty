@@ -62,10 +62,10 @@ public class RabbitMQConsumer {
             logger.error("runtime exception: ", e);
             transactionMessageWrap.getMessage().setState(State.FAIL);
         }
-        ThreadContext.remove("tokenKey");
         transactionMessageWrap.getMessage().setState(State.SUCCESS);
         String responseMessage = CommonUtils.parseObjectToString(transactionMessageWrap);
         logger.info("return response: {}", responseMessage);
+        ThreadContext.remove("tokenKey");
         return responseMessage;
     }
 

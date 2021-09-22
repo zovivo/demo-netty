@@ -140,9 +140,11 @@ public class Transaction {
     public Transaction(TransactionMessage transactionMessage) {
         this.cardNumber = transactionMessage.getCardNumber();
         this.processingCode = transactionMessage.getProcessingCode();
-        this.transactionCode = transactionMessage.getTransactionCode();
-        this.fromAccountType = transactionMessage.getFromAccountType();
-        this.toAccountType = transactionMessage.getToAccountType();
+        if (null != transactionMessage.getProcessingCode() && !transactionMessage.getProcessingCode().isEmpty()) {
+            this.transactionCode = transactionMessage.getTransactionCode();
+            this.fromAccountType = transactionMessage.getFromAccountType();
+            this.toAccountType = transactionMessage.getToAccountType();
+        }
         this.amount = transactionMessage.getAmount();
         this.billingAmount = transactionMessage.getBillingAmount();
         this.transmissionDateTime = transactionMessage.getTransmissionDateTime();
@@ -165,21 +167,23 @@ public class Transaction {
         this.responseCode = transactionMessage.getResponseCode();
         this.terminalName = transactionMessage.getTerminalName();
         this.terminalIdentification = transactionMessage.getTerminalIdentification();
-        this.terminalOwner = transactionMessage.getTerminalOwner();
-        this.terminalCity = transactionMessage.getTerminalCity();
-        this.terminalState = transactionMessage.getTerminalState();
-        this.terminalCountry = transactionMessage.getTerminalCountry();
-        this.terminalAddress = transactionMessage.getTerminalAddress();
-        this.terminalBranch = transactionMessage.getTerminalBranch();
-        this.terminalRegion = transactionMessage.getTerminalRegion();
-        this.terminalClass = transactionMessage.getTerminalClass();
-        this.terminalDate = transactionMessage.getTerminalDate();
-        this.terminalPaymentSystem = transactionMessage.getTerminalPaymentSystem();
-        this.terminalFinancialInstitution = transactionMessage.getTerminalFinancialInstitution();
-        this.terminalRetailer = transactionMessage.getTerminalRetailer();
-        this.terminalCounty = transactionMessage.getTerminalCounty();
-        this.terminalZipCode = transactionMessage.getTerminalZipCode();
-        this.terminalTimeOffset = transactionMessage.getTerminalTimeOffset();
+        if (null != transactionMessage.getTerminalIdentification() && !transactionMessage.getTerminalIdentification().isEmpty()) {
+            this.terminalOwner = transactionMessage.getTerminalOwner();
+            this.terminalCity = transactionMessage.getTerminalCity();
+            this.terminalState = transactionMessage.getTerminalState();
+            this.terminalCountry = transactionMessage.getTerminalCountry();
+            this.terminalAddress = transactionMessage.getTerminalAddress();
+            this.terminalBranch = transactionMessage.getTerminalBranch();
+            this.terminalRegion = transactionMessage.getTerminalRegion();
+            this.terminalClass = transactionMessage.getTerminalClass();
+            this.terminalDate = transactionMessage.getTerminalDate();
+            this.terminalPaymentSystem = transactionMessage.getTerminalPaymentSystem();
+            this.terminalFinancialInstitution = transactionMessage.getTerminalFinancialInstitution();
+            this.terminalRetailer = transactionMessage.getTerminalRetailer();
+            this.terminalCounty = transactionMessage.getTerminalCounty();
+            this.terminalZipCode = transactionMessage.getTerminalZipCode();
+            this.terminalTimeOffset = transactionMessage.getTerminalTimeOffset();
+        }
         this.checkResult = transactionMessage.getCheckResult();
         if (null != transactionMessage.getCheckResult() && !transactionMessage.getCheckResult().isEmpty()) {
             this.pinCheckResult = transactionMessage.getPinCheckResult();
@@ -198,8 +202,10 @@ public class Transaction {
         this.adjustAmount = transactionMessage.getAdjustAmount();
         this.chipData = transactionMessage.getChipData();
         this.issuerInformation = transactionMessage.getIssuerInformation();
-        this.issuerOrganizationName = transactionMessage.getIssuerOrganizationName();
-        this.issuerPaymentName = transactionMessage.getIssuerPaymentName();
+        if (null != transactionMessage.getIssuerInformation() && !transactionMessage.getIssuerInformation().isEmpty()) {
+            this.issuerOrganizationName = transactionMessage.getIssuerOrganizationName();
+            this.issuerPaymentName = transactionMessage.getIssuerPaymentName();
+        }
         this.additionalData = transactionMessage.getAdditionalData();
         this.newPin = transactionMessage.getNewPin();
         this.messageAuthCode = transactionMessage.getMessageAuthCode();
@@ -220,16 +226,18 @@ public class Transaction {
             this.currencyCodeType = transactionMessage.getCurrencyCodeType();
         }
         this.multiCurrencyData = transactionMessage.getMultiCurrencyData();
-        this.toAcctCurrencyCode = transactionMessage.getToAcctCurrencyCode();
-        this.sourceCurrencyCode = transactionMessage.getSourceCurrencyCode();
-        this.toAccountAmount = transactionMessage.getToAccountAmount();
-        this.principalAmount = transactionMessage.getPrincipalAmount();
-        this.fromAcctExchangeRate = transactionMessage.getFromAcctExchangeRate();
-        this.toAcctExchangeRate = transactionMessage.getToAcctExchangeRate();
+        if (null != transactionMessage.getMultiCurrencyData() && !transactionMessage.getMultiCurrencyData().isEmpty()) {
+            this.toAcctCurrencyCode = transactionMessage.getToAcctCurrencyCode();
+            this.sourceCurrencyCode = transactionMessage.getSourceCurrencyCode();
+            this.toAccountAmount = transactionMessage.getToAccountAmount();
+            this.principalAmount = transactionMessage.getPrincipalAmount();
+            this.fromAcctExchangeRate = transactionMessage.getFromAcctExchangeRate();
+            this.toAcctExchangeRate = transactionMessage.getToAcctExchangeRate();
+        }
         this.RRN = transactionMessage.getRRN();
         this.textMessage = transactionMessage.getTextMessage();
         this.multiAccountData = transactionMessage.getMultiAccountData();
-        if (null != transactionMessage.getMultiAccountData() && !transactionMessage.getMultiAccountData().isEmpty()){
+        if (null != transactionMessage.getMultiAccountData() && !transactionMessage.getMultiAccountData().isEmpty()) {
             this.multiAccountLength = transactionMessage.getMultiAccountLength();
             this.multiAccountType = transactionMessage.getMultiAccountType();
             this.multiAccountNumber = transactionMessage.getMultiAccountNumber();

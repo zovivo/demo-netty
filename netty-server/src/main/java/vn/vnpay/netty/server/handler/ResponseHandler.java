@@ -32,8 +32,7 @@ public class ResponseHandler implements Runnable {
     @Override
     public void run() {
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getMessage().getRequestId());
-        logger.info("Begin write response");
-        String message = CommonUtils.parseObjectToString(transactionMessageWrap);
+        logger.info("Begin write response to channel");
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;
@@ -49,7 +48,7 @@ public class ResponseHandler implements Runnable {
             logger.debug("Packing fail: {}", e);
         }
         channel.writeAndFlush(response);
-        logger.info("End write response");
+        logger.info("End write response to channel");
         ThreadContext.clearAll();
     }
 }

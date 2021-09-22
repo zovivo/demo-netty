@@ -1,5 +1,7 @@
 package vn.vnpay.netty.util;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +22,7 @@ public class CommonUtils {
     private static final Gson gson = new Gson();
     private static final Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     private static final Date date = new Date();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static Timestamp getCurrentTime() {
         timestamp.setTime(System.currentTimeMillis());
@@ -67,5 +70,8 @@ public class CommonUtils {
         return new String(bytes, StandardCharsets.UTF_8);
     }
 
+    public static <T> T convertData(Object obj, Class<T> clazz) {
+        return objectMapper.convertValue(obj, clazz);
+    }
 
 }

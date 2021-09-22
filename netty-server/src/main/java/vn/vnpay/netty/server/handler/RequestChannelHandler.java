@@ -15,7 +15,6 @@ import vn.vnpay.netty.server.sender.QueueSender;
 import vn.vnpay.netty.util.CommonUtils;
 import vn.vnpay.netty.util.MessageUtils;
 
-import java.util.UUID;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -42,13 +41,13 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
         }
         String message = CommonUtils.convertBytesToString(msg);
         TransactionMessage transactionMessage = MessageUtils.unpackMsg(msg);
-        String randomRequestId = UUID.randomUUID().toString();
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, randomRequestId);
+        String requestId = transactionMessage.getSystemTraceNumber();
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, requestId);
         logger.info("Read transaction message : {}", CommonUtils.parseObjectToString(transactionMessage));
         Transaction transaction = new Transaction(transactionMessage);
         logger.info("Transaction : {}", CommonUtils.parseObjectToString(transaction));
         logger.info("Read from channel {} message : {}", channel.id().asLongText(), message);
-        TransactionMessageWrap transactionMessageWrap = MessageUtils.createTransactionMessageWrap(transaction, randomRequestId, channel.id().asLongText());
+        TransactionMessageWrap transactionMessageWrap = MessageUtils.createTransactionMessageWrap(transaction, requestId, channel.id().asLongText());
         logger.info("Handle message by RequestHandler");
         threadPoolExecutor.execute(new RequestHandler(transactionMessageWrap, queueSender));
     }

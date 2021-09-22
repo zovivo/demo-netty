@@ -1,9 +1,10 @@
 package vn.vnpay.netty.server.configuration;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
+import io.netty.channel.*;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -39,8 +40,15 @@ public class NettyConfiguration {
     @Bean(name = "serverBootstrap")
     public ServerBootstrap bootstrap(@Lazy ServerConnector serverConnector) {
         ServerBootstrap b = new ServerBootstrap();
-        b.group(bossGroup(), workerGroup())
-                .channel(NioServerSocketChannel.class)
+        EventLoopGroup bossGroup = bossGroup();
+        EventLoopGroup workerGroup = workerGroup();
+        Class<? extends ServerChannel> channelClass;
+        if (Epoll.isAvailable())
+            channelClass = EpollServerSocketChannel.class;
+         else
+            channelClass = NioServerSocketChannel.class;
+        b.group(bossGroup, workerGroup)
+                .channel(channelClass)
                 .handler(new LoggingHandler(LogLevel.DEBUG))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
@@ -55,13 +63,23 @@ public class NettyConfiguration {
     }
 
     @Bean(destroyMethod = "shutdownGracefully")
-    public NioEventLoopGroup bossGroup() {
-        return new NioEventLoopGroup(nettyProperties.getBossCount());
+    public EventLoopGroup bossGroup() {
+        EventLoopGroup bossGroup;
+        if (Epoll.isAvailable())
+            bossGroup = new EpollEventLoopGroup(nettyProperties.getBossCount());
+        else
+            bossGroup = new NioEventLoopGroup(nettyProperties.getBossCount());
+        return bossGroup;
     }
 
     @Bean(destroyMethod = "shutdownGracefully")
-    public NioEventLoopGroup workerGroup() {
-        return new NioEventLoopGroup(nettyProperties.getWorkerCount());
+    public EventLoopGroup workerGroup() {
+        EventLoopGroup workerGroup;
+        if (Epoll.isAvailable())
+            workerGroup = new EpollEventLoopGroup(nettyProperties.getWorkerCount());
+        else
+            workerGroup = new NioEventLoopGroup(nettyProperties.getWorkerCount());
+        return workerGroup;
     }
 
     @Bean

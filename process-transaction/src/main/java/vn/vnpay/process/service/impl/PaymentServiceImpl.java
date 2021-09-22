@@ -38,7 +38,7 @@ public class PaymentServiceImpl extends BaseServiceImpl<PaymentRepository, Payme
         logger.info("begin executePayment ");
         Payment payment = PaymentModel.convertToEntity(paymentModel);
         saveDB(payment);
-        saveRedis(payment);
+//        saveRedis(payment);
         ResponseData responseData = sendToPartner(paymentModel);
         payment = updatePayment(responseData, payment);
         if (!responseData.getCode().equals(CustomCode.SUCCESS.getStatusCode()))
