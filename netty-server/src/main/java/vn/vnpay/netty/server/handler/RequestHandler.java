@@ -3,7 +3,7 @@ package vn.vnpay.netty.server.handler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import vn.vnpay.netty.message.TransactionMessageWrap;
+import vn.vnpay.common.message.TransactionMessageWrap;
 import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.server.sender.QueueSender;
 
@@ -28,7 +28,7 @@ public class RequestHandler implements Runnable {
 
     @Override
     public void run() {
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getMessage().getRequestId());
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getRequestId());
         logger.info("Begin send queue");
         queueSender.send2Queue(transactionMessageWrap);
         logger.info("End send queue");

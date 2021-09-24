@@ -9,8 +9,8 @@ package vn.vnpay.netty.server.configuration;
  */
 public class ServerConfig {
 
-    public static int MAX_FRAME_LENGTH = 256 * 1024;
     public static String PIPELINE_SERVER_CONNECTOR_NAME = "serverConnector";
     public static String LOG_TOKEN_KEY = "tokenKey";
+    public static String TRANSACTION_TYPE = "transaction-types";
 
 }

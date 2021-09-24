@@ -12,7 +12,6 @@ import vn.vnpay.process.entity.Payment;
 import vn.vnpay.process.exception.CustomException;
 import vn.vnpay.process.model.PaymentModel;
 import vn.vnpay.process.repository.PaymentRepository;
-import vn.vnpay.process.repository.redis.PaymentRepositoryRedis;
 import vn.vnpay.process.response.ResponseData;
 import vn.vnpay.process.service.PaymentService;
 import vn.vnpay.process.util.CommonUtils;
@@ -29,16 +28,12 @@ public class PaymentServiceImpl extends BaseServiceImpl<PaymentRepository, Payme
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Autowired
-    private PaymentRepositoryRedis paymentRepositoryRedis;
-
     @Override
     @Transactional(noRollbackFor = {RuntimeException.class, CustomException.class})
     public ResponseData executePayment(PaymentModel paymentModel) throws RuntimeException, CustomException {
         logger.info("begin executePayment ");
         Payment payment = PaymentModel.convertToEntity(paymentModel);
         saveDB(payment);
-//        saveRedis(payment);
         ResponseData responseData = sendToPartner(paymentModel);
         payment = updatePayment(responseData, payment);
         if (!responseData.getCode().equals(CustomCode.SUCCESS.getStatusCode()))
@@ -58,18 +53,6 @@ public class PaymentServiceImpl extends BaseServiceImpl<PaymentRepository, Payme
         }
         logger.info("save DB successfully: {}", CommonUtils.parseObjectToString(payment));
         logger.info("end saveDB ");
-    }
-
-    protected void saveRedis(Payment payment) throws RuntimeException {
-        logger.info("begin saveRedis ");
-        try {
-            paymentRepositoryRedis.insert(payment);
-        } catch (RuntimeException e) {
-            logger.error("save Redis failed", e);
-            throw new RuntimeException("save Redis failed");
-        }
-        logger.info("save Redis successfully");
-        logger.info("end saveRedis ");
     }
 
     protected ResponseData sendToPartner(PaymentModel payment) {

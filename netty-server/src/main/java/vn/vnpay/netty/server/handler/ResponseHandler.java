@@ -5,10 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.jpos.iso.ISOException;
-import vn.vnpay.netty.message.TransactionMessageWrap;
+import vn.vnpay.common.message.TransactionMessageWrap;
 import vn.vnpay.netty.server.configuration.ServerConfig;
-import vn.vnpay.netty.util.CommonUtils;
-import vn.vnpay.netty.util.MessageUtils;
+import vn.vnpay.netty.server.util.MessagePackager;
 
 /**
  * Project: netty-spring
@@ -23,15 +22,17 @@ public class ResponseHandler implements Runnable {
 
     private final TransactionMessageWrap transactionMessageWrap;
     private final Channel channel;
+    private final MessagePackager messagePackager;
 
-    public ResponseHandler(TransactionMessageWrap msgWrap, Channel channel) {
+    public ResponseHandler(TransactionMessageWrap msgWrap, Channel channel, MessagePackager messagePackager) {
         this.transactionMessageWrap = msgWrap;
         this.channel = channel;
+        this.messagePackager = messagePackager;
     }
 
     @Override
     public void run() {
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getMessage().getRequestId());
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getRequestId());
         logger.info("Begin write response to channel");
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
@@ -43,7 +44,7 @@ public class ResponseHandler implements Runnable {
         }
         byte[] response = new byte[0];
         try {
-            response = MessageUtils.packMsg(transactionMessageWrap);
+            response = messagePackager.pack(transactionMessageWrap);
         } catch (ISOException e) {
             logger.debug("Packing fail: {}", e);
         }

@@ -7,19 +7,15 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import vn.vnpay.netty.constant.State;
-import vn.vnpay.netty.message.PaymentMessage;
-import vn.vnpay.netty.message.TransactionMessageWrap;
-import vn.vnpay.netty.model.Transaction;
-import vn.vnpay.process.configuration.realoadable.ReloadablePropertySourceFactory;
+import vn.vnpay.common.constant.State;
+import vn.vnpay.common.message.PaymentMessage;
+import vn.vnpay.common.message.TransactionMessageWrap;
+import vn.vnpay.common.model.Transaction;
 import vn.vnpay.process.exception.CustomException;
 import vn.vnpay.process.model.PaymentModel;
 import vn.vnpay.process.service.PaymentService;
 import vn.vnpay.process.util.CommonUtils;
-import vn.vnpay.process.util.ResponsePreProcessor;
 
 /**
  * Project: demo-payment
@@ -30,17 +26,12 @@ import vn.vnpay.process.util.ResponsePreProcessor;
  * Created with IntelliJ IDEA
  */
 @Component
-@RefreshScope
-@PropertySource(value = "${spring.rabbitmq-config.url}", factory = ReloadablePropertySourceFactory.class)
 public class RabbitMQConsumer {
 
     private static final Logger logger = LogManager.getLogger(RabbitMQConsumer.class);
 
     @Autowired
     private PaymentService paymentService;
-
-    @Autowired
-    private ResponsePreProcessor responsePreProcessor;
 
     @Value("${spring.rabbitmq.queue}")
     private String queue;
@@ -51,18 +42,18 @@ public class RabbitMQConsumer {
         Transaction transaction = transactionMessageWrap.getTransaction();
         PaymentMessage paymentMessage = new PaymentMessage(transaction);
         PaymentModel paymentModel = CommonUtils.convertData(paymentMessage.getPayment(), PaymentModel.class);
-        ThreadContext.put("tokenKey", transactionMessageWrap.getMessage().getRequestId());
+        ThreadContext.put("tokenKey", transactionMessageWrap.getRequestId());
         logger.info("received from queue: {} Message: {}", queue, message);
         try {
             paymentService.executePayment(paymentModel);
         } catch (CustomException e) {
             logger.warn("custom exception: ", e);
-            transactionMessageWrap.getMessage().setState(State.FAIL);
+            transactionMessageWrap.setState(State.FAIL);
         } catch (RuntimeException e) {
             logger.error("runtime exception: ", e);
-            transactionMessageWrap.getMessage().setState(State.FAIL);
+            transactionMessageWrap.setState(State.FAIL);
         }
-        transactionMessageWrap.getMessage().setState(State.SUCCESS);
+        transactionMessageWrap.setState(State.SUCCESS);
         String responseMessage = CommonUtils.parseObjectToString(transactionMessageWrap);
         logger.info("return response: {}", responseMessage);
         ThreadContext.remove("tokenKey");

@@ -10,11 +10,8 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -31,11 +28,22 @@ import java.net.InetSocketAddress;
  */
 
 @Configuration
-@RequiredArgsConstructor
-@EnableConfigurationProperties(NettyProperties.class)
 public class NettyConfiguration {
 
-    private final NettyProperties nettyProperties;
+    @Value("${netty.port}")
+    private int port;
+
+    @Value("${netty.bossCount}")
+    private int bossCount;
+
+    @Value("${netty.workerCount}")
+    private int workerCount;
+
+    @Value("${netty.keepAlive}")
+    private boolean keepAlive;
+
+    @Value("${netty.backlog}")
+    private int backlog;
 
     @Bean(name = "serverBootstrap")
     public ServerBootstrap bootstrap(@Lazy ServerConnector serverConnector) {
@@ -45,11 +53,10 @@ public class NettyConfiguration {
         Class<? extends ServerChannel> channelClass;
         if (Epoll.isAvailable())
             channelClass = EpollServerSocketChannel.class;
-         else
+        else
             channelClass = NioServerSocketChannel.class;
         b.group(bossGroup, workerGroup)
                 .channel(channelClass)
-                .handler(new LoggingHandler(LogLevel.DEBUG))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) throws Exception {
@@ -57,8 +64,8 @@ public class NettyConfiguration {
                         pipeline.addLast(ServerConfig.PIPELINE_SERVER_CONNECTOR_NAME, serverConnector);
                     }
                 })
-                .option(ChannelOption.SO_BACKLOG, nettyProperties.getBacklog())
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+                .option(ChannelOption.SO_BACKLOG, backlog)
+                .childOption(ChannelOption.SO_KEEPALIVE, keepAlive);
         return b;
     }
 
@@ -66,9 +73,9 @@ public class NettyConfiguration {
     public EventLoopGroup bossGroup() {
         EventLoopGroup bossGroup;
         if (Epoll.isAvailable())
-            bossGroup = new EpollEventLoopGroup(nettyProperties.getBossCount());
+            bossGroup = new EpollEventLoopGroup(bossCount);
         else
-            bossGroup = new NioEventLoopGroup(nettyProperties.getBossCount());
+            bossGroup = new NioEventLoopGroup(bossCount);
         return bossGroup;
     }
 
@@ -76,15 +83,15 @@ public class NettyConfiguration {
     public EventLoopGroup workerGroup() {
         EventLoopGroup workerGroup;
         if (Epoll.isAvailable())
-            workerGroup = new EpollEventLoopGroup(nettyProperties.getWorkerCount());
+            workerGroup = new EpollEventLoopGroup(workerCount);
         else
-            workerGroup = new NioEventLoopGroup(nettyProperties.getWorkerCount());
+            workerGroup = new NioEventLoopGroup(workerCount);
         return workerGroup;
     }
 
     @Bean
     public InetSocketAddress tcpSocketAddress() {
-        return new InetSocketAddress(nettyProperties.getTcpPort());
+        return new InetSocketAddress(port);
     }
 
     @Bean("channelGroup")

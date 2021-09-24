@@ -39,7 +39,7 @@ public class RabbitMQConfig {
     @Value("${spring.rabbitmq.queue}")
     private String queueName;
 
-    @Value("${spring.rabbitmq.reply-queue}")
+    @Value("${spring.rabbitmq.replyQueue}")
     private String replyQueueName;
 
     @Value("${spring.rabbitmq.exchange}")
@@ -54,7 +54,7 @@ public class RabbitMQConfig {
     @Value("${spring.rabbitmq.requested-channel-max}")
     private int maxChannel;
 
-    @Value("${spring.rabbitmq.routingkey}")
+    @Value("${spring.rabbitmq.routingKey}")
     private String routingKey;
 
     @Bean(name = "pooledChannelConnectionFactory")
@@ -67,6 +67,7 @@ public class RabbitMQConfig {
         rabbitConnectionFactory.setConnectionTimeout(connectionTimeout);
         rabbitConnectionFactory.setRequestedChannelMax(maxChannel);
         PooledChannelConnectionFactory pcf = new PooledChannelConnectionFactory(rabbitConnectionFactory);
+        logger.debug("Connected to RabbitMq host: {} port: {}", hostName, port);
         return pcf;
     }
 

@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import vn.vnpay.netty.message.TransactionMessageWrap;
-import vn.vnpay.netty.util.CommonUtils;
+import vn.vnpay.common.message.TransactionMessageWrap;
+import vn.vnpay.common.util.CommonUtils;
 
 /**
  * Project: netty-spring
@@ -28,15 +28,16 @@ public class QueueSender {
     @Value("${spring.rabbitmq.exchange}")
     private String exchange;
 
-    @Value("${spring.rabbitmq.routingkey}")
+    @Value("${spring.rabbitmq.routingKey}")
     private String routingKey;
 
-    @Value("${spring.rabbitmq.reply-queue}")
+    @Value("${spring.rabbitmq.replyQueue}")
     private String replyQueue;
 
     public void send2Queue(TransactionMessageWrap transactionMessageWrap) {
         String data = CommonUtils.parseObjectToString(transactionMessageWrap);
-        logger.info("Begin send to exchange {} message: {}", exchange, CommonUtils.parseObjectToString(transactionMessageWrap));
+        logger.info("Begin send to exchange {} message: {}", exchange, data);
+        transactionMessageWrap = CommonUtils.parseStringToObject(data, TransactionMessageWrap.class);
         rabbitTemplate.convertAndSend(exchange, routingKey, data, message -> {
             message.getMessageProperties().setReplyTo(replyQueue);
             return message;

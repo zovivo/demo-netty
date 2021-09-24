@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import vn.vnpay.netty.server.server.TCPServer;
 
 @RequiredArgsConstructor
 @SpringBootApplication
+@EnableScheduling
 public class NettyServerApplication {
 
     private final TCPServer tcpServer;

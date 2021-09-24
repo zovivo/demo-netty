@@ -13,16 +13,6 @@ services:
       - "5432:5432"
     restart: unless-stopped
 
-  redis:
-    image: redis
-    restart: always
-    hostname: redis
-    container_name: redis
-    environment:
-      REDIS_PASSWORD: "admin"
-    ports:
-      - '6379:6379'
-
   rabbitmq:
     image: 'rabbitmq:3.8-management'
     restart: always
@@ -34,3 +24,83 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  netty-server-1:
+    build:
+      context: netty-server
+      dockerfile: Dockerfile
+    container_name: netty-server-app-1
+    ports:
+      - "8091:8091"
+    restart: always
+    environment: # Pass environment variables to the service
+      netty_port: 8091
+      spring_rabbitmq_host: rabbitmq
+      spring_rabbitmq_port: 5672
+      spring_rabbitmq_exchange: transaction.exchange
+      spring_rabbitmq_queue: transaction.queue-1
+      spring_rabbitmq_replyQueue: transaction.reply-queue-1
+      spring_rabbitmq_routingKey: transaction.routingkey-1
+    depends_on:
+      - rabbitmq
+
+  netty-server-2:
+    build:
+      context: netty-server
+      dockerfile: Dockerfile
+    container_name: netty-server-app-2
+    ports:
+      - "8092:8092"
+    restart: always
+    environment: # Pass environment variables to the service
+      netty_port: 8092
+      spring_rabbitmq_host: rabbitmq
+      spring_rabbitmq_port: 5672
+      spring_rabbitmq_exchange: transaction.exchange
+      spring_rabbitmq_queue: transaction.queue-2
+      spring_rabbitmq_replyQueue: transaction.reply-queue-2
+      spring_rabbitmq_routingKey: transaction.routingkey-2
+    depends_on:
+      - rabbitmq
+
+  process-transaction-1:
+    build:
+      context: process-transaction
+      dockerfile: Dockerfile
+    container_name: process-transaction-app-1
+    ports:
+      - "8081:8081"
+    restart: always
+    environment: # Pass environment variables to the service
+      server_port: 8081
+      spring_datasource_url: jdbc:postgresql://postgres:5432/postgres
+      spring_datasource_username: postgres
+      spring_datasource_password: 123456
+      spring_rabbitmq_host: rabbitmq
+      spring_rabbitmq_port: 5672
+      spring_rabbitmq_exchange: transaction.exchange
+      spring_rabbitmq_queue: transaction.queue-1
+    depends_on:
+      - rabbitmq
+      - postgres
+
+  process-transaction-2:
+    build:
+      context: process-transaction
+      dockerfile: Dockerfile
+    container_name: process-transaction-app-2
+    ports:
+      - "8082:8082"
+    restart: always
+    environment: # Pass environment variables to the service
+      server_port: 8082
+      spring_datasource_url: jdbc:postgresql://postgres:5432/postgres
+      spring_datasource_username: postgres
+      spring_datasource_password: 123456
+      spring_rabbitmq_host: rabbitmq
+      spring_rabbitmq_port: 5672
+      spring_rabbitmq_exchange: transaction.exchange
+      spring_rabbitmq_queue: transaction.queue-2
+    depends_on:
+      - rabbitmq
+      - postgres

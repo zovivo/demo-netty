@@ -61,13 +61,6 @@ public class TCPServer {
         }
     }
 
-    public Channel getChannel(ChannelId id) {
-        if (channelGroup != null && !channelGroup.isEmpty()) {
-            return channelGroup.find(id);
-        }
-        return null;
-    }
-
     public Channel addChannel(Channel channel) {
         channelGroup.add(channel);
         channelCache.put(channel.id().asLongText(), channel.id());

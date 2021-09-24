@@ -10,21 +10,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import vn.vnpay.process.configuration.realoadable.ReloadablePropertySourceFactory;
 import vn.vnpay.process.constant.DataSourceConstant;
 
 import java.util.Properties;
@@ -35,10 +32,8 @@ import java.util.Properties;
                 DataSourceTransactionManagerAutoConfiguration.class,
                 HibernateJpaAutoConfiguration.class
         })
-@PropertySource(value = "${spring.datasource-config.location}", factory = ReloadablePropertySourceFactory.class)
 public class HibernateConfig {
 
-    private static final String PACKAGES_TO_SCAN = "vn.vnpay.process.entity";
     private static Logger logger = LogManager.getLogger(HibernateConfig.class);
     @Value("${hibernate.dialect}")
     private String hibernateDialect;
@@ -49,13 +44,17 @@ public class HibernateConfig {
     @Value("${hibernate.format-sql}")
     private String hibernateFormatSQL;
 
-    @Bean(name = "hikariDataSource")
+    @Bean
     @Primary
-    @RefreshScope
     @ConfigurationProperties(DataSourceConstant.HIKARI_PREFIX_CONFIG)
-    public HikariDataSource dataSource() {
-        HikariDataSource hikariDataSource = DataSourceBuilder.create().type(HikariDataSource.class).build();
-        return hikariDataSource;
+    public DataSourceProperties dataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean(name = "hikariDataSource")
+    public HikariDataSource dataSource(DataSourceProperties properties) {
+        return (HikariDataSource) properties.initializeDataSourceBuilder()
+                .type(HikariDataSource.class).build();
     }
 
     @Bean(name = "entityManagerFactory")

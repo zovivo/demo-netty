@@ -1,4 +1,4 @@
-2021-09-21 17:08:31,285 parseStringToObject            - RequestID [] vn.vnpay.netty.util.CommonUtils - parse Exception:  - CommonUtils           
+2021-09-21 17:08:31,285 parseStringToObject            - RequestID [] vn.vnpay.CommonUtils - parse Exception:  - CommonUtils
             
 com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:226) ~[gson-2.8.5.jar:?]
@@ -6,7 +6,7 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at com.google.gson.Gson.fromJson(Gson.java:892) ~[gson-2.8.5.jar:?]
 	at com.google.gson.Gson.fromJson(Gson.java:841) ~[gson-2.8.5.jar:?]
 	at com.google.gson.Gson.fromJson(Gson.java:813) ~[gson-2.8.5.jar:?]
-	at vn.vnpay.netty.util.CommonUtils.parseStringToObject(CommonUtils.java:59) [classes/:?]
+	at vn.vnpay.CommonUtils.parseStringToObject(CommonUtils.java:59) [classes/:?]
 	at vn.vnpay.netty.client.handler.ClientHandler.channelRead0(ClientHandler.java:45) [classes/:?]
 	at vn.vnpay.netty.client.handler.ClientHandler.channelRead0(ClientHandler.java:24) [classes/:?]
 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99) [netty-transport-4.1.45.Final.jar:4.1.45.Final]

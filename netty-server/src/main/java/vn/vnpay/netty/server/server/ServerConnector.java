@@ -4,15 +4,16 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.group.ChannelGroup;
 import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import vn.vnpay.netty.server.configuration.TransactionTypeComponent;
 import vn.vnpay.netty.server.handler.RequestChannelHandler;
 import vn.vnpay.netty.server.sender.QueueSender;
+import vn.vnpay.netty.server.util.MessagePackager;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -33,11 +34,15 @@ public class ServerConnector extends ChannelInboundHandlerAdapter {
     private final TCPServer server;
     private final ThreadPoolExecutor threadPoolExecutor;
     private final QueueSender queueSender;
+    private final TransactionTypeComponent transactionTypeComponent;
+    private final MessagePackager messagePackager;
 
-    public ServerConnector(ChannelGroup channels, @Lazy TCPServer server, ThreadPoolExecutor threadPoolExecutor, QueueSender queueSender) {
+    public ServerConnector(@Lazy TCPServer server, ThreadPoolExecutor threadPoolExecutor, QueueSender queueSender, TransactionTypeComponent transactionTypeComponent, MessagePackager messagePackager) {
         this.server = server;
         this.threadPoolExecutor = threadPoolExecutor;
         this.queueSender = queueSender;
+        this.transactionTypeComponent = transactionTypeComponent;
+        this.messagePackager = messagePackager;
     }
 
     @Override
@@ -45,10 +50,9 @@ public class ServerConnector extends ChannelInboundHandlerAdapter {
         ctx.channel().config().setAutoRead(true);
         Channel channel = ctx.channel();
         server.addChannel(channel);
+        log.debug("Server receive new connection from client IP: {}", channel.remoteAddress().toString());
         this.server.getCounter().incrementChannelConnectsAndGet();
-        log.debug("Server accept new connections. Counter: {}.", this.server.getCounter().toString());
-//        channel.pipeline().addLast("frameDecoder",
-//                new IsoFrameDecoder(ServerConfig.MAX_FRAME_LENGTH));
+        log.debug("Server accept new connection. Counter: {}.", this.server.getCounter().toString());
         channel.pipeline().addLast("bytesDecoder",
                 new ByteArrayDecoder());
 
@@ -56,13 +60,13 @@ public class ServerConnector extends ChannelInboundHandlerAdapter {
         channel.pipeline().addLast("bytesEncoder", new ByteArrayEncoder());
 
         //add business logic handler
-        channel.pipeline().addLast("requestChannelHandler", new RequestChannelHandler(threadPoolExecutor, queueSender));
+        channel.pipeline().addLast("requestChannelHandler", new RequestChannelHandler(threadPoolExecutor, queueSender, transactionTypeComponent, messagePackager));
         super.channelActive(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        server.removeChannel(ctx.channel());
+        this.server.removeChannel(ctx.channel());
         this.server.getCounter().incrementChannelDisconnectsAndGet();
         log.debug("Server Inactive connections. Counter: {}", this.server.getCounter().toString());
         super.channelInactive(ctx);
