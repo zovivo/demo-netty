@@ -44,7 +44,7 @@ public class TransactionMessage {
     private String terminalIdentification;
     private String checkResult;
     private String track1Data;
-    private String additionalDataPrivate;
+    private String otherTransactionReference;
     private String transactionCurrencyCode;
     private String billingCurrencyCode;
     private String pinData;
@@ -60,7 +60,7 @@ public class TransactionMessage {
     private String receivingCode;
     private String fromAccount;
     private String toAccount;
-    private String transactionDescription;
+    private String hostId;
     private String fromAccountBalance;
     private String multiCurrencyData;
     private String RRN;
@@ -161,11 +161,11 @@ public class TransactionMessage {
     }
 
     public String getOtherRRNCode(){
-        return this.additionalDataPrivate.substring(0,12);
+        return this.otherTransactionReference.substring(0,12);
     }
 
     public String getOtherPANCode(){
-        return this.additionalDataPrivate.substring(12);
+        return this.otherTransactionReference.substring(12);
     }
 
     public String getIssuerOrganizationName(){

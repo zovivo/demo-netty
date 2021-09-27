@@ -72,7 +72,7 @@ public class Transaction {
 
     private String track1Data;
 
-    private String additionalDataPrivate;
+    private String otherTransactionReference;
     private String otherRRNCode;
     private String otherPANCode;
 
@@ -99,7 +99,7 @@ public class Transaction {
     private String receivingCode;
     private String fromAccount;
     private String toAccount;
-    private String transactionDescription;
+    private String hostId;
 
     private String fromAccountBalance;
     private String fromAcctAvailableBalance;
@@ -193,8 +193,8 @@ public class Transaction {
             this.cvvCheckResult = transactionMessage.getCVVCheckResult();
         }
         this.track1Data = transactionMessage.getTrack1Data();
-        this.additionalDataPrivate = transactionMessage.getAdditionalDataPrivate();
-        if (null != transactionMessage.getAdditionalDataPrivate() && !transactionMessage.getAdditionalDataPrivate().isEmpty()) {
+        this.otherTransactionReference = transactionMessage.getOtherTransactionReference();
+        if (null != transactionMessage.getOtherTransactionReference() && !transactionMessage.getOtherTransactionReference().isEmpty()) {
             this.otherRRNCode = transactionMessage.getOtherRRNCode();
             this.otherPANCode = transactionMessage.getOtherPANCode();
         }
@@ -221,7 +221,7 @@ public class Transaction {
         this.receivingCode = transactionMessage.getReceivingCode();
         this.fromAccount = transactionMessage.getFromAccount();
         this.toAccount = transactionMessage.getToAccount();
-        this.transactionDescription = transactionMessage.getTransactionDescription();
+        this.hostId = transactionMessage.getHostId();
         this.fromAccountBalance = transactionMessage.getFromAccountBalance();
         if (null != transactionMessage.getFromAccountBalance() && !transactionMessage.getFromAccountBalance().isEmpty()) {
             this.fromAcctAvailableBalance = transactionMessage.getFromAcctAvailableBalance();

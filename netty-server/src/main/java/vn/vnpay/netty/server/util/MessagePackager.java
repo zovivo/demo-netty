@@ -59,7 +59,7 @@ public class MessagePackager {
         isoMsg.set(43, transactionMessageWrap.getTransaction().getTerminalIdentification());
         isoMsg.set(44, transactionMessageWrap.getTransaction().getCheckResult());
         isoMsg.set(45, transactionMessageWrap.getTransaction().getTrack1Data());
-        isoMsg.set(48, transactionMessageWrap.getTransaction().getAdditionalDataPrivate());
+        isoMsg.set(48, transactionMessageWrap.getTransaction().getOtherTransactionReference());
         isoMsg.set(49, transactionMessageWrap.getTransaction().getTransactionCurrencyCode());
         isoMsg.set(51, transactionMessageWrap.getTransaction().getBillingCurrencyCode());
         isoMsg.set(52, transactionMessageWrap.getTransaction().getPinData());
@@ -75,7 +75,7 @@ public class MessagePackager {
         isoMsg.set(100, transactionMessageWrap.getTransaction().getReceivingCode());
         isoMsg.set(102, transactionMessageWrap.getTransaction().getFromAccount());
         isoMsg.set(103, transactionMessageWrap.getTransaction().getToAccount());
-        isoMsg.set(104, transactionMessageWrap.getTransaction().getTransactionDescription());
+        isoMsg.set(104, transactionMessageWrap.getTransaction().getHostId());
         isoMsg.set(105, transactionMessageWrap.getTransaction().getFromAccountBalance());
         isoMsg.set(106, transactionMessageWrap.getTransaction().getMultiCurrencyData());
         isoMsg.set(107, transactionMessageWrap.getTransaction().getRRN());
@@ -130,7 +130,7 @@ public class MessagePackager {
         transactionMessage.setTerminalIdentification(isoMsg.getString(43));
         transactionMessage.setCheckResult(isoMsg.getString(44));
         transactionMessage.setTrack1Data(isoMsg.getString(45));
-        transactionMessage.setAdditionalDataPrivate(isoMsg.getString(48));
+        transactionMessage.setOtherTransactionReference(isoMsg.getString(48));
         transactionMessage.setTransactionCurrencyCode(isoMsg.getString(49));
         transactionMessage.setBillingCurrencyCode(isoMsg.getString(51));
         transactionMessage.setPinData(isoMsg.getString(52));
@@ -146,7 +146,7 @@ public class MessagePackager {
         transactionMessage.setReceivingCode(isoMsg.getString(100));
         transactionMessage.setFromAccount(isoMsg.getString(102));
         transactionMessage.setToAccount(isoMsg.getString(103));
-        transactionMessage.setTransactionDescription(isoMsg.getString(104));
+        transactionMessage.setHostId(isoMsg.getString(104));
         transactionMessage.setFromAccountBalance(isoMsg.getString(105));
         transactionMessage.setMultiCurrencyData(isoMsg.getString(106));
         transactionMessage.setRRN(isoMsg.getString(107));

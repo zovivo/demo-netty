@@ -31,7 +31,7 @@ public class IntervalRequest implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             logger.info("Write to channel: {} message: {}", ctx.channel().id().asLongText(), isoMessage);
             byte[] data = new byte[0];
             try {

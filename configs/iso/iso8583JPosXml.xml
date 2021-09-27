@@ -41,7 +41,7 @@
     <isofield id="63" length="16" name="new PIN" class="org.jpos.iso.IF_CHAR"/>
     <isofield id="64" length="16" name="message authentication code field" class="org.jpos.iso.IF_CHAR"/>
     <isofield id="70" length="3" name="network management information code" class="org.jpos.iso.IFA_NUMERIC"/>
-    <isofield id="95" length="24" name="replacement amounts data" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="95" length="24" name="replacement amounts" class="org.jpos.iso.IFA_NUMERIC"/>
     <isofield id="100" length="11" name="receiving institution ident code" class="org.jpos.iso.IFA_LLCHAR"/>
     <isofield id="102" length="30" name="from account" class="org.jpos.iso.IFA_LLCHAR"/>
     <isofield id="103" length="30" name="to account" class="org.jpos.iso.IFA_LLCHAR"/>

@@ -84,10 +84,10 @@
     <Loggers>
         <Logger name="vn.vnpay" additivity="false">
             <appender-ref ref="console" level="info"/>
-            <appender-ref ref="warn-log" level="warn"/>
-            <appender-ref ref="error-log" level="error"/>
             <appender-ref ref="debug-log" level="debug"/>
             <appender-ref ref="info-log" level="info"/>
+            <appender-ref ref="warn-log" level="warn"/>
+            <appender-ref ref="error-log" level="error"/>
         </Logger>
         <Root level="info">
             <AppenderRef ref="console"/>
