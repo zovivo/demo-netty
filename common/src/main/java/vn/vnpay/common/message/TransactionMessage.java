@@ -17,68 +17,68 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TransactionMessage {
 
-    private String messageType;
-    private String cardNumber;
-    private String processingCode;
-    private String amount;
-    private String billingAmount;
-    private String transmissionDateTime;
-    private String conversionRate;
-    private String systemTraceNumber;
-    private String transactionTime;
-    private String transactionDate;
-    private String merchantType;
-    private String countryCode;
-    private String entryMode;
-    private String sequenceNumber;
-    private String conditionCode;
-    private String reasonCode;
-    private String transactionFee;
-    private String acquiringId;
-    private String forwardId;
-    private String track2Data;
-    private String retrievalRefNumber;
-    private String authIdResponse;
-    private String responseCode;
-    private String terminalName;
-    private String terminalIdentification;
-    private String checkResult;
-    private String track1Data;
-    private String otherTransactionReference;
-    private String transactionCurrencyCode;
-    private String billingCurrencyCode;
-    private String pinData;
-    private String additionalDataSecurity;
-    private String adjustAmount;
-    private String chipData;
-    private String issuerInformation;
-    private String additionalData;
-    private String newPin;
-    private String messageAuthCode;
-    private String networkCode;
-    private String replacementAmountData;
-    private String receivingCode;
-    private String fromAccount;
-    private String toAccount;
-    private String hostId;
-    private String fromAccountBalance;
-    private String multiCurrencyData;
-    private String RRN;
-    private String textMessage;
-    private String multiAccountData;
-    private String messageCode;
-    private String backupField;
-    private String statementMiniData;
-    private String statementData;
-    private String billingData;
-    private String additionalPOSData;
-    private String additional3DS;
-    private String additionalData1;
-    private String additionalData2;
-    private String reservedPrivateUse1;
-    private String reservedPrivateUse2;
-    private String reservedPrivateUse3;
-    private String MAC2;
+    private String messageType; // MTI
+    private String cardNumber;  // field 2
+    private String processingCode;  // field 3
+    private String amount;  // field 4
+    private String billingAmount;   // field 6
+    private String transmissionDateTime;    // field 7
+    private String conversionRate;  // field 10
+    private String systemTraceNumber;   // field 11
+    private String transactionTime; // field 12
+    private String transactionDate; // field 13
+    private String merchantType;    // field 18
+    private String countryCode; // field 19
+    private String entryMode;   // field 22
+    private String sequenceNumber;  // field 23
+    private String conditionCode;   // field 25
+    private String reasonCode;  // field 26
+    private String transactionFee;  // field 28
+    private String acquiringId; // field 32
+    private String forwardId;   // field 33
+    private String track2Data;  // field 35
+    private String retrievalRefNumber;  // field 37
+    private String authIdResponse;  // field 38
+    private String responseCode;    // field 39
+    private String terminalName;    // field 41
+    private String terminalIdentification;  // field 43
+    private String checkResult; // field 44
+    private String track1Data;  // field 45
+    private String otherTransactionReference;   // field 48
+    private String transactionCurrencyCode; // field 49
+    private String billingCurrencyCode; // field 51
+    private String pinData; // field 52
+    private String additionalDataSecurity;  // field 53
+    private String adjustAmount;    // field 54
+    private String chipData;    // field 55
+    private String issuerInformation;   // field 61
+    private String additionalData;  // field 62
+    private String newPin;  // field 63
+    private String messageAuthCode; // field 64
+    private String networkCode; // field 70
+    private String replacementAmountData;   // field 95
+    private String receivingCode;   // field 100
+    private String fromAccount; // field 102
+    private String toAccount;   // field 103
+    private String hostId;  // field 104
+    private String fromAccountBalance;  // field 105
+    private String multiCurrencyData;   // field 106
+    private String RRN; // field 107
+    private String textMessage; // field 108
+    private String multiAccountData;    // field 109
+    private String messageCode; // field 110
+    private String backupField; // field 111
+    private String statementMiniData;   // field 114
+    private String statementData;   // field 115
+    private String billingData; // field 116
+    private String additionalPOSData;   // field 121
+    private String additional3DS;   // field 122
+    private String additionalData1; // field 123
+    private String additionalData2; // field 124
+    private String reservedPrivateUse1; // field 125
+    private String reservedPrivateUse2; // field 126
+    private String reservedPrivateUse3; // field 127
+    private String MAC2;    // field 128
 
     public String getTransactionCode(){
         return this.processingCode.substring(0,3);
