@@ -65,8 +65,8 @@ public class QueueListener {
         }
         logger.info("End get channel");
         logger.info("Response to client channel: {} Message: {}", channel.id().asLongText(), message);
-        threadPoolExecutor.execute(new ResponseHandler(transactionMessageWrap, channel, messagePackager));
         ThreadContext.remove(ServerConfig.LOG_TOKEN_KEY);
+        threadPoolExecutor.execute(new ResponseHandler(transactionMessageWrap, channel, messagePackager));
         return;
     }
 

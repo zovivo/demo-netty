@@ -40,7 +40,7 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
     protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
         Channel channel = ctx.channel();
         logger.debug("Server receive new message from client IP: {}", channel.remoteAddress().toString());
-        logger.info("Server received message : {}", CommonUtils.convertBytesToString(msg));
+        logger.info("Server received message bytes: {}", CommonUtils.convertBytesToString(msg));
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;
@@ -65,5 +65,6 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
         logger.info("Handle message by RequestHandler");
 
         threadPoolExecutor.execute(new RequestHandler(transactionMessageWrap, queueSender));
+        ThreadContext.clearAll();
     }
 }
