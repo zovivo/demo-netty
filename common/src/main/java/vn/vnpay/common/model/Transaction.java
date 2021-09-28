@@ -18,7 +18,12 @@ import vn.vnpay.common.message.TransactionMessage;
 @NoArgsConstructor
 public class Transaction {
 
-    private String messageType; // MTI
+    private String headerMessage;   // header
+    private String startIndicator;  // header field 1
+    private String protocolVersion; // header field 2
+    private String rejectStatus;    // header field 3
+
+    private String messageType;// MTI
 
     private String cardNumber;  // field 2
 
@@ -140,6 +145,10 @@ public class Transaction {
     private String MAC2;  // field 128
 
     public Transaction(TransactionMessage transactionMessage) {
+        this.headerMessage = transactionMessage.getHeaderMessage();
+        this.startIndicator = transactionMessage.getStartIndicator();
+        this.protocolVersion = transactionMessage.getProtocolVersion();
+        this.rejectStatus = transactionMessage.getRejectStatus();
         this.messageType = transactionMessage.getMessageType();
         this.cardNumber = transactionMessage.getCardNumber();
         this.processingCode = transactionMessage.getProcessingCode();

@@ -56,11 +56,6 @@ public class CommonUtils {
         return new String(bytes, StandardCharsets.UTF_8);
     }
 
-    public static byte[] removeHeaderMessage(byte[] messageByte) {
-        String message = convertBytesToString(messageByte);
-        return convertStringToBytes(message.substring(8));
-    }
-
     public static String randomID(){
         return UUID.randomUUID().toString();
     }

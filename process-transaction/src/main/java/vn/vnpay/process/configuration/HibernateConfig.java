@@ -35,6 +35,7 @@ import java.util.Properties;
 public class HibernateConfig {
 
     private static Logger logger = LogManager.getLogger(HibernateConfig.class);
+
     @Value("${hibernate.dialect}")
     private String hibernateDialect;
     @Value("${hibernate.ddl-auto}")

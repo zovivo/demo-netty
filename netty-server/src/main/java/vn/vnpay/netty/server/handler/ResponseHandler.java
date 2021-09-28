@@ -6,8 +6,10 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.jpos.iso.ISOException;
 import vn.vnpay.common.message.TransactionMessageWrap;
+import vn.vnpay.common.util.CommonUtils;
 import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.server.util.MessagePackager;
+import vn.vnpay.netty.server.util.MessageUtil;
 
 /**
  * Project: netty-spring
@@ -48,6 +50,9 @@ public class ResponseHandler implements Runnable {
         } catch (ISOException e) {
             logger.debug("Packing fail: {}", e);
         }
+        // add header
+        response = MessageUtil.addHeaderMessage(response, transactionMessageWrap.getTransaction().getHeaderMessage());
+        logger.info("Write to channel {} response: {}", channel.id().asLongText(), CommonUtils.convertBytesToString(response));
         channel.writeAndFlush(response);
         logger.info("End write response to channel");
         ThreadContext.clearAll();

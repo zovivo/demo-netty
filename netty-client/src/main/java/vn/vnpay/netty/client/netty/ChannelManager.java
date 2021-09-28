@@ -4,7 +4,6 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
@@ -16,13 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import vn.vnpay.common.model.Payment;
-import vn.vnpay.common.util.CommonUtils;
 import vn.vnpay.netty.client.handler.ClientHandler;
-import vn.vnpay.netty.client.handler.RequestsHandler;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Project: netty-spring
@@ -71,7 +64,7 @@ public class ChannelManager {
 //        createChannel(new ClientHandler(isoMessage3));
     }
 
-    @Scheduled(fixedRate = 10000l)
+//    @Scheduled(fixedRate = 10000l)
     public void test() throws Exception {
         logger.info("===Running Application=== port: {} ", environment.getProperty("server.port"));
     }

@@ -168,14 +168,4 @@ public class MessagePackager {
         return transactionMessage;
     }
 
-    public TransactionMessageWrap createTransactionMessageWrap(Transaction transaction, String requestId, String channelId, String transactionType) {
-        TransactionMessageWrap transactionMessageWrap = new TransactionMessageWrap();
-        transactionMessageWrap.setTransaction(transaction);
-        transactionMessageWrap.setRequestId(requestId);
-        transactionMessageWrap.setChannelId(channelId);
-        transactionMessageWrap.setState(State.IN_PROGRESS);
-        transactionMessageWrap.setTransactionType(transactionType);
-        return transactionMessageWrap;
-    }
-
 }

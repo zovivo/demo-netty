@@ -17,6 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TransactionMessage {
 
+    private String headerMessage;   // header
     private String messageType; // MTI
     private String cardNumber;  // field 2
     private String processingCode;  // field 3
@@ -79,6 +80,16 @@ public class TransactionMessage {
     private String reservedPrivateUse2; // field 126
     private String reservedPrivateUse3; // field 127
     private String MAC2;    // field 128
+
+    public String getStartIndicator(){
+        return this.headerMessage.substring(0,3);
+    }
+    public String getProtocolVersion(){
+        return this.headerMessage.substring(3,5);
+    }
+    public String getRejectStatus(){
+        return this.headerMessage.substring(5);
+    }
 
     public String getTransactionCode(){
         return this.processingCode.substring(0,3);

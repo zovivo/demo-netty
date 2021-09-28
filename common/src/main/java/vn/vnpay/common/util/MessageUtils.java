@@ -192,4 +192,14 @@ public class MessageUtils {
         return transactionMessageWrap;
     }
 
+    public static String getHeaderMessage(byte[] messageByte, int numChar) {
+        String message = CommonUtils.convertBytesToString(messageByte);
+        return message.substring(0,numChar);
+    }
+
+    public static byte[] removeHeaderMessage(byte[] messageByte, int numChar) {
+        String message = CommonUtils.convertBytesToString(messageByte);
+        return CommonUtils.convertStringToBytes(message.substring(numChar));
+    }
+
 }

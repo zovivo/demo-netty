@@ -52,7 +52,13 @@ public class QueueListener {
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getRequestId());
         logger.info("End convert message");
         logger.info("Start get channel");
-        Channel channel = server.getChannel(transactionMessageWrap.getChannelId());
+        Channel channel = null;
+        try {
+            channel = server.getChannel(transactionMessageWrap.getChannelId());
+        } catch (NullPointerException e) {
+            logger.debug("Client has been disconnected", e);
+            return;
+        }
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;

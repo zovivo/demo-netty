@@ -9,8 +9,9 @@ package vn.vnpay.netty.server.configuration;
  */
 public class ServerConfig {
 
-    public static String PIPELINE_SERVER_CONNECTOR_NAME = "serverConnector";
-    public static String LOG_TOKEN_KEY = "tokenKey";
-    public static String TRANSACTION_TYPE = "transaction-types";
+    public static final String PIPELINE_SERVER_CONNECTOR_NAME = "serverConnector";
+    public static final String LOG_TOKEN_KEY = "tokenKey";
+    public static final String TRANSACTION_TYPE = "transaction-types";
+    public static final int NUM_HEADER_CHARACTERS_MESSAGE = 8;
 
 }

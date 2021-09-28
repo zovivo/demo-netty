@@ -15,6 +15,7 @@ import vn.vnpay.netty.server.configuration.ServerConfig;
 import vn.vnpay.netty.server.configuration.TransactionTypeComponent;
 import vn.vnpay.netty.server.sender.QueueSender;
 import vn.vnpay.netty.server.util.MessagePackager;
+import vn.vnpay.netty.server.util.MessageUtil;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -39,13 +40,17 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
     protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
         Channel channel = ctx.channel();
         logger.debug("Server receive new message from client IP: {}", channel.remoteAddress().toString());
+        logger.info("Server received message : {}", CommonUtils.convertBytesToString(msg));
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;
         }
-        // remove the first 8 characters
-        msg = CommonUtils.removeHeaderMessage(msg);
+        logger.info("Start convert message");
+        // cut the first 8 characters
+        String headerMessage = MessageUtil.getHeaderMessage(msg,ServerConfig.NUM_HEADER_CHARACTERS_MESSAGE);
+        msg = MessageUtil.removeHeaderMessage(msg, ServerConfig.NUM_HEADER_CHARACTERS_MESSAGE);
         TransactionMessage transactionMessage = messagePackager.unpack(msg);
+        transactionMessage.setHeaderMessage(headerMessage);
 
         String requestId = CommonUtils.randomID();
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, requestId);
@@ -56,7 +61,7 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
         logger.info("Transaction : {}", CommonUtils.parseObjectToString(transaction));
         String transactionType = transactionTypeComponent.getTransactionType(transaction.getTransactionCode(), transactionMessage.getMessageType());
         logger.info("Transaction Type: {}", transactionType);
-        TransactionMessageWrap transactionMessageWrap = messagePackager.createTransactionMessageWrap(transaction, requestId, channel.id().asLongText(), transactionType);
+        TransactionMessageWrap transactionMessageWrap = MessageUtil.createTransactionMessageWrap(transaction, requestId, channel.id().asLongText(), transactionType);
         logger.info("Handle message by RequestHandler");
 
         threadPoolExecutor.execute(new RequestHandler(transactionMessageWrap, queueSender));

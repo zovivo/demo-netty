@@ -12,6 +12,7 @@ import vn.vnpay.common.util.MessageUtils;
 import vn.vnpay.netty.client.constant.ClientConstant;
 import vn.vnpay.netty.client.service.IntervalRequest;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,8 +32,8 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-//        String requestId = UUID.randomUUID().toString();
-//        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, requestId);
+        String requestId = UUID.randomUUID().toString();
+        ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, requestId);
 //        Giao dich sign on
 //        String isoMessage = "A4M05000081082200000020000000400000000000000081703414081111400001301";
 //        Giao dich IBFT thu huong- van tin
@@ -43,10 +44,9 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
 //        String isoMessage = "A4M050000210F63866112AA0A0080000000004D600A019999999*********01363690000000001350000000001350000080504000472008211014208056012704000000D00000000110000000000220999999*********0136=00000112599900001081000MB90TWMB                          Hanoi                         00070418 Tran Huu Duc, My Dinh 1, Na100001                        Hanoi, Vietnam                00420210805BARD      BARD                         00000010000000007047041000VBA&RD    13150028100013606004870000006004870000000000000000000000000000000000006100000000000000054DongABank;9704060129837294;Nguyen Thi Hoa chuyen khoan1206970406001***                                         036FN2=BARD\\x10P2=999999*********0136\\x10TC=6";
 //        Giao dich IBFT phat lenh- giao dich dao -tru tien
 //        String isoMessage = "A4M050000430F63866112EA0A00800000000045400A019999999*********10713690000000002500000000002500000072104253153594011234307216012704000000D00000000110000000000220999999*********1071=00000112392294033200060081000MB90TWMB                          Hanoi                         00070418 Tran Huu Duc, My Dinh 1, Na100001                        Hanoi, Vietnam                00420210721BARD      BARD                         0000001000000000704704BARDBARD      1316002052210710000000000000000000000000000006100000000000000054DongABank;9704060129837294;HO DANG PHUONG chuyen khoan12001***                                         005ERR=0";
-        logger.info("Write to channel: {} message: {}", ctx.channel().id().asLongText(), isoMessage);
+        logger.info("Create message: {}", isoMessage);
 //        byte[] data = MessageUtils.pack(isoMessage);
 //        ctx.writeAndFlush(data);
-
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.execute(new IntervalRequest(ctx, this.isoMessage));
         ThreadContext.clearMap();
@@ -54,7 +54,10 @@ public class ClientHandler extends SimpleChannelInboundHandler<byte[]> {
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
+        String headerMessage = MessageUtils.getHeaderMessage(msg,8);
+        msg = MessageUtils.removeHeaderMessage(msg, 8);
         TransactionMessage transactionMessage = MessageUtils.unpack(msg);
+        transactionMessage.setHeaderMessage(headerMessage);
         ThreadContext.put(ClientConstant.LOG_TOKEN_KEY, transactionMessage.getSystemTraceNumber());
         logger.info("Response code: {}", transactionMessage.getResponseCode());
         logger.info("Response from channel: {} TransactionMessage: {}", ctx.channel().id().asLongText(), CommonUtils.parseObjectToString(transactionMessage));
