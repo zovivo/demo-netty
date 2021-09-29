@@ -24,7 +24,6 @@ public class QueueSender {
 
     private final RabbitTemplate rabbitTemplate;
 
-
     @Value("${spring.rabbitmq.exchange}")
     private String exchange;
 
@@ -34,6 +33,13 @@ public class QueueSender {
     @Value("${spring.rabbitmq.replyQueue}")
     private String replyQueue;
 
+    /**
+     * gửi TransactionMessageWrap lên queue,
+     * convert sang String JSON trước khi gửi
+     *
+     * @param transactionMessageWrap {@link TransactionMessageWrap}
+     * @return void
+     */
     public void send2Queue(TransactionMessageWrap transactionMessageWrap) {
         String data = CommonUtils.parseObjectToString(transactionMessageWrap);
         logger.info("Begin send to exchange {} message: {}", exchange, data);

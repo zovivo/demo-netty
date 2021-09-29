@@ -29,6 +29,12 @@ public class MessagePackager {
         this.packager = packager;
     }
 
+    /**
+     * đóng gói bản tin TransactionMessageWrap chuyển sang dạng byte[]
+     *
+     * @param transactionMessageWrap {@link TransactionMessageWrap}
+     * @return bytes {@link byte[]}
+     */
     public byte[] pack(TransactionMessageWrap transactionMessageWrap) throws ISOException {
         ISOMsg isoMsg = new ISOMsg();
         isoMsg.setPackager(packager);
@@ -98,6 +104,12 @@ public class MessagePackager {
         return packedMessage;
     }
 
+    /**
+     * giải bản tin TransactionMessage từ dạng byte[]
+     *
+     * @param packedMessage {@link byte[]}
+     * @return transactionMessage {@link TransactionMessage}
+     */
     public TransactionMessage unpack(byte[] packedMessage) throws ISOException {
         TransactionMessage transactionMessage = new TransactionMessage();
         ISOMsg isoMsg = new ISOMsg();

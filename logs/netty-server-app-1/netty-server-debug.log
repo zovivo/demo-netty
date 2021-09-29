@@ -1,130 +1,142 @@
-2021-09-28 06:47:55,997 logStarting                    - RequestID [] vn.vnpay.netty.server.NettyServerApplication - Running with Spring Boot v2.5.4, Spring v5.3.9 - NettyServerApplication 
-2021-09-28 06:48:08,503 pooledChannelConnectionFactory - RequestID [] vn.vnpay.netty.server.configuration.RabbitMQConfig - Connected to RabbitMq host: rabbitmq port: 5672 - RabbitMQConfig         
-2021-09-28 06:48:10,470 <init>                         - RequestID [] vn.vnpay.netty.server.configuration.TransactionTypeComponent - transactionTypes: {"369":{"0200":"DEDUCTION_ORDER_REQUEST","0210":"DEDUCTION_ORDER_RESPONSE","0420":"REVERSE_TRANSACTION_DEDUCTION_REQUEST","0430":"REVERSE_TRANSACTION_DEDUCTION_RESPONSE"},"031":{"0200":"LOOKUP_BENEFICIARY_INFORMATION_REQUEST","0210":"LOOKUP_BENEFICIARY_INFORMATION_RESPONSE"},"043":{"0200":"BENEFICIARY_CONFIRM_REQUEST","0210":"BENEFICIARY_CONFIRM_RESPONSE"}} - ansactionTypeComponent 
-2021-09-28 06:52:46,599 logStarting                    - RequestID [] vn.vnpay.netty.server.NettyServerApplication - Running with Spring Boot v2.5.4, Spring v5.3.9 - NettyServerApplication 
-2021-09-28 06:52:55,665 pooledChannelConnectionFactory - RequestID [] vn.vnpay.netty.server.configuration.RabbitMQConfig - Connected to RabbitMq host: rabbitmq port: 5672 - RabbitMQConfig         
-2021-09-28 06:52:56,908 <init>                         - RequestID [] vn.vnpay.netty.server.configuration.TransactionTypeComponent - transactionTypes: {"369":{"0200":"DEDUCTION_ORDER_REQUEST","0210":"DEDUCTION_ORDER_RESPONSE","0420":"REVERSE_TRANSACTION_DEDUCTION_REQUEST","0430":"REVERSE_TRANSACTION_DEDUCTION_RESPONSE"},"031":{"0200":"LOOKUP_BENEFICIARY_INFORMATION_REQUEST","0210":"LOOKUP_BENEFICIARY_INFORMATION_RESPONSE"},"043":{"0200":"BENEFICIARY_CONFIRM_REQUEST","0210":"BENEFICIARY_CONFIRM_RESPONSE"}} - ansactionTypeComponent 
-2021-09-28 06:54:35,752 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server receive new connection from client IP: /172.22.0.1:35432 - ServerConnector        
-2021-09-28 06:54:35,758 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server accept new connection. Counter: [channelConnects=1 channelDisconnects=0]]. - ServerConnector        
-2021-09-28 06:54:35,883 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:54:40,663 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:54:45,675 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:54:50,707 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:54:55,702 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:00,710 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:05,724 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:10,734 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:15,745 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:20,758 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:25,761 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:30,774 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:35,785 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:40,804 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:45,822 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:50,821 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:55:55,829 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:56:00,843 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.22.0.1:35432 - RequestChannelHandler  
-2021-09-28 06:57:23,277 logStarting                    - RequestID [] vn.vnpay.netty.server.NettyServerApplication - Running with Spring Boot v2.5.4, Spring v5.3.9 - NettyServerApplication 
-2021-09-28 06:57:33,018 pooledChannelConnectionFactory - RequestID [] vn.vnpay.netty.server.configuration.RabbitMQConfig - Connected to RabbitMq host: rabbitmq port: 5672 - RabbitMQConfig         
-2021-09-28 06:57:34,617 <init>                         - RequestID [] vn.vnpay.netty.server.configuration.TransactionTypeComponent - transactionTypes: {"369":{"0200":"DEDUCTION_ORDER_REQUEST","0210":"DEDUCTION_ORDER_RESPONSE","0420":"REVERSE_TRANSACTION_DEDUCTION_REQUEST","0430":"REVERSE_TRANSACTION_DEDUCTION_RESPONSE"},"031":{"0200":"LOOKUP_BENEFICIARY_INFORMATION_REQUEST","0210":"LOOKUP_BENEFICIARY_INFORMATION_RESPONSE"},"043":{"0200":"BENEFICIARY_CONFIRM_REQUEST","0210":"BENEFICIARY_CONFIRM_RESPONSE"}} - ansactionTypeComponent 
-2021-09-28 06:58:18,627 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server receive new connection from client IP: /172.23.0.1:54406 - ServerConnector        
-2021-09-28 06:58:18,637 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server accept new connection. Counter: [channelConnects=1 channelDisconnects=0]]. - ServerConnector        
-2021-09-28 06:58:18,799 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:23,642 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:28,645 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:33,658 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:38,675 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:43,693 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:48,711 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:53,719 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:58:58,739 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:03,789 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:08,765 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:13,782 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:18,798 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:23,805 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:28,822 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:33,843 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:38,845 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:43,853 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:48,859 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:53,867 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 06:59:58,883 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:03,885 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:08,897 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:13,907 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:18,914 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:23,932 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:28,944 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:33,951 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:38,965 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:43,970 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:48,990 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:53,996 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:00:59,007 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:04,024 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:09,037 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:14,043 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:19,059 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:24,077 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:29,087 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:34,093 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:39,101 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:44,118 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:49,132 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:54,144 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:01:59,154 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:04,155 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:09,162 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:14,171 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:19,186 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:24,196 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:29,200 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:34,218 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:39,225 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:44,230 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:49,240 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:54,253 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:02:59,267 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:04,280 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:09,278 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:14,285 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:19,302 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:24,315 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:29,333 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:34,349 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:39,355 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:44,359 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:49,366 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:54,370 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:03:59,370 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:04,384 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:09,389 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:14,401 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:19,412 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:24,424 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:29,434 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:34,439 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:39,443 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:44,459 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:49,471 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:54,474 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:04:59,490 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:04,499 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:09,505 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:14,517 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:19,530 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:24,538 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:29,543 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:34,557 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:39,562 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:44,574 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:49,584 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:54,600 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:05:59,647 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:04,631 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:09,636 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:14,650 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:19,652 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:24,658 channelRead0                   - RequestID [] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.23.0.1:54406 - RequestChannelHandler  
-2021-09-28 07:06:26,910 channelInactive                - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server Inactive connections. Counter: [channelConnects=1 channelDisconnects=1]] - ServerConnector        
+2021-09-29 08:47:30,980 logStarting                    - RequestID [] vn.vnpay.netty.server.NettyServerApplication - Running with Spring Boot v2.5.4, Spring v5.3.9 - NettyServerApplication 
+2021-09-29 08:47:34,036 pooledChannelConnectionFactory - RequestID [] vn.vnpay.netty.server.configuration.RabbitMQConfig - Connected to RabbitMq host: rabbitmq port: 5672 - RabbitMQConfig         
+2021-09-29 08:47:34,547 <init>                         - RequestID [] vn.vnpay.netty.server.configuration.TransactionTypeComponent - transactionTypes: {"369":{"0200":"DEDUCTION_ORDER_REQUEST","0210":"DEDUCTION_ORDER_RESPONSE","0420":"REVERSE_TRANSACTION_DEDUCTION_REQUEST","0430":"REVERSE_TRANSACTION_DEDUCTION_RESPONSE"},"031":{"0200":"LOOKUP_BENEFICIARY_INFORMATION_REQUEST","0210":"LOOKUP_BENEFICIARY_INFORMATION_RESPONSE"},"043":{"0200":"BENEFICIARY_CONFIRM_REQUEST","0210":"BENEFICIARY_CONFIRM_RESPONSE"}} - ansactionTypeComponent 
+2021-09-29 08:48:15,962 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server receive new connection from client IP: /172.20.0.1:48680 - ServerConnector        
+2021-09-29 08:48:15,972 channelActive                  - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server accept new connection. Counter: [channelConnects=1 channelDisconnects=0]]. - ServerConnector        
+2021-09-29 08:48:16,145 channelRead0                   - RequestID [e9609881-d45f-4f12-ad71-d61d0bcb747b] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:20,981 channelRead0                   - RequestID [0c888427-8dde-4723-b18a-e289f1d965b4] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:25,998 channelRead0                   - RequestID [c0186890-6b6f-4b9a-8bbd-d7cbe05d0e54] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:31,005 channelRead0                   - RequestID [50c8f9a4-0af2-4868-986a-097e537be954] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:36,018 channelRead0                   - RequestID [fa0047ca-b202-4278-82cd-2da27caa29aa] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:41,032 channelRead0                   - RequestID [106218c8-043c-4d75-9cc3-4720620ffcbb] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:46,049 channelRead0                   - RequestID [c8e2e975-8684-4a84-9fb2-67fd1aab43d4] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:51,070 channelRead0                   - RequestID [35d194ac-da89-412a-8392-7054f7fd0ff7] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:48:56,076 channelRead0                   - RequestID [4c2b9922-38c4-4192-b927-ff0b5fd3602d] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:01,096 channelRead0                   - RequestID [a08a5a65-e432-4ee4-86a6-0e177e29e1c0] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:06,111 channelRead0                   - RequestID [113463bf-60eb-4c0c-a775-2dec3b0bfea7] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:11,120 channelRead0                   - RequestID [61f80b03-e6f2-4235-92c0-ef9567dd540c] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:16,123 channelRead0                   - RequestID [10ea6656-48e9-4569-99b4-30d47c56316d] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:21,134 channelRead0                   - RequestID [26a996fe-cf4b-4461-8722-d5c3d07c689c] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:26,136 channelRead0                   - RequestID [2ba8ae67-5dd4-4074-87c2-778a18b4abfa] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:31,171 channelRead0                   - RequestID [8a112d48-9b7a-419a-9b9e-319126393459] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:36,182 channelRead0                   - RequestID [b3b4785c-0f2b-4d63-91ab-23866606da6c] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:41,184 channelRead0                   - RequestID [33b6be61-bdc3-435c-a485-bd807319cedc] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:46,185 channelRead0                   - RequestID [37b1a93d-d3dd-4a57-9eb6-78d3d88556ce] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:51,197 channelRead0                   - RequestID [3fb97982-fceb-4d76-945c-dbf5b706da4f] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:49:56,205 channelRead0                   - RequestID [c72e25a0-b079-42e4-8862-bbef515b7b95] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:01,249 channelRead0                   - RequestID [7ac27168-c9b6-4dc4-92de-1197994a0f77] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:06,232 channelRead0                   - RequestID [5f20f519-644c-4a72-8eb9-1c6da1f0c052] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:11,249 channelRead0                   - RequestID [47a22d29-4eaa-4d83-8dc5-7cc9df00b032] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:16,349 channelRead0                   - RequestID [108ea3ff-bacb-4853-812a-b0f5fb82ca80] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:21,361 channelRead0                   - RequestID [7279046c-79d7-4116-bdf6-2389e288f7ea] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:26,734 channelRead0                   - RequestID [7d849e86-a04d-412e-81d3-35c4cc0b77bd] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:31,381 channelRead0                   - RequestID [fe8a3f88-c0ac-4530-b567-24e5b42ace7a] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:36,388 channelRead0                   - RequestID [68d10b8c-7793-49b0-9918-1db602bf7953] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:41,404 channelRead0                   - RequestID [abae3ef7-f98c-48d7-93f6-2804432915ee] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:46,408 channelRead0                   - RequestID [68d00d8c-f265-40b9-8280-532ea54e1832] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:51,429 channelRead0                   - RequestID [364aef25-fc7e-484c-92c0-43ae14b1854c] vn.vnpay.netty.server.handler.RequestChannelHandler - Server receive new message from client IP: /172.20.0.1:48680 - RequestChannelHandler  
+2021-09-29 08:50:51,688 channelInactive                - RequestID [] vn.vnpay.netty.server.server.ServerConnector - Server Inactive connections. Counter: [channelConnects=1 channelDisconnects=1]] - ServerConnector        
+2021-09-29 08:50:51,753 receivedResponseMessage        - RequestID [364aef25-fc7e-484c-92c0-43ae14b1854c] vn.vnpay.netty.server.listener.QueueListener - Client has been disconnected - QueueListener          
+java.lang.NullPointerException: null
+	at java.util.concurrent.ConcurrentHashMap.get(ConcurrentHashMap.java:936) ~[?:1.8.0_141]
+	at io.netty.channel.group.DefaultChannelGroup.find(DefaultChannelGroup.java:108) ~[netty-all-4.1.45.Final.jar!/:4.1.45.Final]
+	at vn.vnpay.netty.server.server.TCPServer.getChannel(TCPServer.java:77) ~[classes!/:0.0.1-SNAPSHOT]
+	at vn.vnpay.netty.server.listener.QueueListener.receivedResponseMessage(QueueListener.java:57) ~[classes!/:0.0.1-SNAPSHOT]
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_141]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_141]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:68) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:244) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:194) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:137) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1656) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1575) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1563) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1554) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1498) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:968) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:914) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:83) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1289) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1195) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_141]
+2021-09-29 08:53:44,986 receivedResponseMessage        - RequestID [7d849e86-a04d-412e-81d3-35c4cc0b77bd] vn.vnpay.netty.server.listener.QueueListener - Client has been disconnected - QueueListener          
+java.lang.NullPointerException: null
+	at java.util.concurrent.ConcurrentHashMap.get(ConcurrentHashMap.java:936) ~[?:1.8.0_141]
+	at io.netty.channel.group.DefaultChannelGroup.find(DefaultChannelGroup.java:108) ~[netty-all-4.1.45.Final.jar!/:4.1.45.Final]
+	at vn.vnpay.netty.server.server.TCPServer.getChannel(TCPServer.java:77) ~[classes!/:0.0.1-SNAPSHOT]
+	at vn.vnpay.netty.server.listener.QueueListener.receivedResponseMessage(QueueListener.java:57) ~[classes!/:0.0.1-SNAPSHOT]
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_141]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_141]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:68) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:244) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:194) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:137) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1656) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1575) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1563) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1554) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1498) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:968) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:914) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:83) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1289) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1195) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_141]
+2021-09-29 08:53:45,476 receivedResponseMessage        - RequestID [68d10b8c-7793-49b0-9918-1db602bf7953] vn.vnpay.netty.server.listener.QueueListener - Client has been disconnected - QueueListener          
+java.lang.NullPointerException: null
+	at java.util.concurrent.ConcurrentHashMap.get(ConcurrentHashMap.java:936) ~[?:1.8.0_141]
+	at io.netty.channel.group.DefaultChannelGroup.find(DefaultChannelGroup.java:108) ~[netty-all-4.1.45.Final.jar!/:4.1.45.Final]
+	at vn.vnpay.netty.server.server.TCPServer.getChannel(TCPServer.java:77) ~[classes!/:0.0.1-SNAPSHOT]
+	at vn.vnpay.netty.server.listener.QueueListener.receivedResponseMessage(QueueListener.java:57) ~[classes!/:0.0.1-SNAPSHOT]
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_141]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_141]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:68) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:244) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:194) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:137) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1656) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1575) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1563) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1554) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1498) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:968) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:914) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:83) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1289) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1195) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_141]
+2021-09-29 08:53:45,823 receivedResponseMessage        - RequestID [68d00d8c-f265-40b9-8280-532ea54e1832] vn.vnpay.netty.server.listener.QueueListener - Client has been disconnected - QueueListener          
+java.lang.NullPointerException: null
+	at java.util.concurrent.ConcurrentHashMap.get(ConcurrentHashMap.java:936) ~[?:1.8.0_141]
+	at io.netty.channel.group.DefaultChannelGroup.find(DefaultChannelGroup.java:108) ~[netty-all-4.1.45.Final.jar!/:4.1.45.Final]
+	at vn.vnpay.netty.server.server.TCPServer.getChannel(TCPServer.java:77) ~[classes!/:0.0.1-SNAPSHOT]
+	at vn.vnpay.netty.server.listener.QueueListener.receivedResponseMessage(QueueListener.java:57) ~[classes!/:0.0.1-SNAPSHOT]
+	at sun.reflect.GeneratedMethodAccessor32.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_141]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_141]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120) ~[spring-messaging-5.3.9.jar!/:5.3.9]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:68) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:244) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:194) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:137) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1656) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1575) ~[spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1563) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1554) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1498) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:968) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:914) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:83) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1289) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1195) [spring-rabbit-2.3.10.jar!/:2.3.10]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_141]

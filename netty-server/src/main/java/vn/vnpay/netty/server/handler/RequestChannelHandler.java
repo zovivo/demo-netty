@@ -38,9 +38,12 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
+        String requestId = CommonUtils.randomID();
+        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, requestId);
+
         Channel channel = ctx.channel();
         logger.debug("Server receive new message from client IP: {}", channel.remoteAddress().toString());
-        logger.info("Server received message bytes: {}", CommonUtils.convertBytesToString(msg));
+        logger.info("Server received message bytes: [{}]", CommonUtils.convertBytesToString(msg));
         if (null == channel || !channel.isActive() || !channel.isOpen()) {
             logger.debug("Channel is inactive or closed");
             return;
@@ -51,9 +54,6 @@ public class RequestChannelHandler extends SimpleChannelInboundHandler<byte[]> {
         msg = MessageUtil.removeHeaderMessage(msg, ServerConfig.NUM_HEADER_CHARACTERS_MESSAGE);
         TransactionMessage transactionMessage = messagePackager.unpack(msg);
         transactionMessage.setHeaderMessage(headerMessage);
-
-        String requestId = CommonUtils.randomID();
-        ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, requestId);
 
         // business logic
         logger.info("Read transaction message : {}", CommonUtils.parseObjectToString(transactionMessage));

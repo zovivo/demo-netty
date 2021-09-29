@@ -39,10 +39,24 @@ public class CommonUtils {
         return bytes;
     }
 
+    /**
+     * chuyển đối tượng thành String dạng JSON
+     *
+     * @param object {@link Object}
+     * @return json {@link String}
+     */
     public static String parseObjectToString(Object object) {
         return gson.toJson(object);
     }
 
+    /**
+     * chuyển String JSON thành object class T
+     * return null nếu có exception
+     *
+     * @param json {@link String}
+     * @param classObject {@link Class}
+     * @return object {@link T}
+     */
     public static <T> T parseStringToObject(String json, Class<T> classObject) {
         try {
             return gson.fromJson(json, classObject);
@@ -52,6 +66,12 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * chuyển chuỗi bytes thành String
+     *
+     * @param bytes {@link byte[]}
+     * @return result {@link String}
+     */
     public static String convertBytesToString(byte[] bytes) {
         return new String(bytes, StandardCharsets.UTF_8);
     }

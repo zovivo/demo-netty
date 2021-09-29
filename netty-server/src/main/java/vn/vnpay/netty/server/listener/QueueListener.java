@@ -49,6 +49,10 @@ public class QueueListener {
         logger.info("Received from queue: {} Message: {}", replyQueue, message);
         logger.info("Start convert message");
         TransactionMessageWrap transactionMessageWrap = CommonUtils.parseStringToObject(transactionMsgWrapStr, TransactionMessageWrap.class);
+        if (null == transactionMessageWrap){
+            logger.info("Convert message failed");
+            return;
+        }
         ThreadContext.put(ServerConfig.LOG_TOKEN_KEY, transactionMessageWrap.getRequestId());
         logger.info("End convert message");
         logger.info("Start get channel");
